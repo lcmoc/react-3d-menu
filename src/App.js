@@ -1,11 +1,12 @@
 import './index.css';
 import Triangle from './components/Triangle';
+import Menu from './components/Menu';
 
 function App() {
   return (
     <div>
-      <h1 className="text-red-600">Geo-Rechner</h1>
-      <Triangle />
+      {/* <Triangle /> */}
+      <Menu />
     </div>
   );
 }
