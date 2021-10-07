@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import KeyboardEventHandler from "react-keyboard-event-handler";
-import Content from "./components/Content";
+import Content from "../Content";
 import MenuLinks from "./components/MenuLinks";
 import "./styles.css";
 
@@ -14,7 +14,7 @@ const Menu = () => {
 
   return (
     <div className={active ? "ContentContainer active" : "ContentContainer"}>
-      <div className="w-full z-10 h-12 left-0 top-0 fixed">
+      <div className="w-full z-20 h-12 left-0 top-0 fixed">
         <div className="w-full flex justify-between items-center text-white">
           <KeyboardEventHandler
             handleKeys={["esc"]}
@@ -24,19 +24,20 @@ const Menu = () => {
             className="h-10 w-10 cursor-pointer fixed top-2 right-3"
             onClick={(event) => handleClick(event)}
           >
-            <div className="bar cursor-pointer fixed top-5 right-5 w-8"></div>
+            <div className="bar rounded-sm bg-black h-0.5 transition duration-500 cursor-pointer fixed top-5 right-5 w-8"></div>
           </div>
         </div>
       </div>
 
-      <div className={classNames({
-        "main-container": true,
-        "overflow-hidden": active,
-      })}>
-        <MenuLinks />
+      <div
+        className={classNames({
+          "main-container": true,
+          "overflow-hidden filter blur-sm": active,
+        })}
+      >
         <div
           className={classNames({
-            "main relative": true,
+            "main relative origin-left z-10 transition duration-500": true,
             "cursor-pointer ": active,
           })}
           onClick={() => {
@@ -55,7 +56,7 @@ const Menu = () => {
               <div className="flex flex-col items-center justify-center mt-10">
                 <h2 className="text-blue-400 text-4xl">Geo-Rechner</h2>
               </div>
-                <Content />
+              <Content />
             </div>
           </header>
         </div>
@@ -63,6 +64,14 @@ const Menu = () => {
           <div className="shadow two absolute w-full h-screen top-0 left-0 rounded-xl bg-blue-900"></div>
           <div className="shadow one absolute w-full h-screen top-0 left-0 rounded-xl bg-blue-800"></div>
         </div>
+      </div>
+      <div
+        className={classNames({
+          "fixed bottom-5 w-full z-20 flex items-center justify-center": true,
+          hidden: !active,
+        })}
+      >
+        <MenuLinks />
       </div>
     </div>
   );
