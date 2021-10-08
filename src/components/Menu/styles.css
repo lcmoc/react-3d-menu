@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+.ContentContainer {
+  background-color: #276afa;
+  transform-style: preserve-3d;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: rgb(10, 10, 10);
+  transition: 0.5s;
+}
+
+.bar:before {
+  transform: translateY(-9px);
+}
+
+.bar:after {
+  transform: translateY(9px);
+}
+
+.ContentContainer.active .bar {
+  background-color: transparent;
+}
+
+.ContentContainer.active .bar:before {
+  transform: translateY(0) rotate(45deg);
+}
+
+.ContentContainer.active .bar:after {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.ContentContainer.active .main {
+  transform: translate(10%, 50px) scale(0.8, 0.8);
+}
+
+.shadow {
+  transform: scale(0.8, 0.8);
+}
+
+.ContentContainer.active .shadow.one {
+  transition: ease-out 0.5s;
+  transform: scale(0.75, 0.8);
+}
+
+.ContentContainer.active .shadow.two {
+  transition: ease-out 1s;
+  transform: scale(0.65, 0.9);
+}
