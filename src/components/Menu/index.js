@@ -53,10 +53,7 @@ const Menu = () => {
                 "rounded-xl": active,
               })}
             >
-              <div className="flex flex-col items-center justify-center mt-10">
-                <h2 className="text-blue-400 text-4xl">Geo-Rechner</h2>
-              </div>
-              <Content />
+            <Content />
             </div>
           </header>
         </div>
@@ -71,7 +68,7 @@ const Menu = () => {
           hidden: !active,
         })}
       >
-        <MenuLinks />
+        <MenuLinks active={active}/>
       </div>
     </div>
   );
