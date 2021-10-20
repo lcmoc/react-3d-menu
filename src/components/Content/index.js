@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from '../Home/index'
-import Triangle from '../Triangle/index'
-import Sinus from '../Sinus/index'
+import Home from "../Home/index";
+import Triangle from "../Triangle/index";
+import Sinus from "../Sinus/index";
 
 const Content = () => {
   return (
     <>
-    <Router>
-      <Route exact path="/" component={Home} />
-      <Route path="/dreieck" component={Triangle} />
-      <Route path="/sinus" component={Sinus} />
-    </Router>
+      <Router>
+        <Route exact path="/" component={Home} />
+        <Route path="/dreieck" component={Triangle} />
+        <Route path="/sinus" component={Sinus} />
+      </Router>
       <div className="flex items-center justify-center flex-col mr-52 ml-52 mt-10">
         <h1>
           Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
@@ -125,7 +125,7 @@ const Content = () => {
           delenit augue duis dolore te feugait nulla facilisi.
         </p>
 
-        <p>
+        <p className="mb-96">
           Nam liber tempor cum soluta nobis eleifend option congue nihil
           imperdiet doming id quod mazim placerat facer possim assum. Lorem
           ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
