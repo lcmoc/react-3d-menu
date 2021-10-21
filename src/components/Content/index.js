@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from '../Home/index'
-import Triangle from '../Triangle/index'
-import Sinus from '../Sinus/index'
+import Home from "../Home/index";
+import Triangle from "../Triangle/index";
+import Sinus from "../Sinus/index";
 
 const Content = () => {
   return (

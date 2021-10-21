@@ -4,6 +4,7 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 import Content from "../Content";
 import MenuLinks from "./components/MenuLinks";
 import "./styles.css";
+import Logo from "../../assets/Logo.png";
 
 const Menu = () => {
   const [active, setActive] = useState(false);
@@ -24,11 +25,13 @@ const Menu = () => {
             className="h-10 w-10 cursor-pointer fixed top-2 right-3"
             onClick={(event) => handleClick(event)}
           >
-            <div className="bar rounded-sm bg-black h-0.5 transition duration-500 cursor-pointer fixed top-5 right-5 w-8"></div>
+            <div className="bar rounded-sm bg-black h-0.5 transition duration-500 cursor-pointer fixed top-14 right-10 w-8"></div>
           </div>
         </div>
       </div>
-
+      <div className="flex fixed top-1 left-0 z-50">
+        <img src={Logo} alt="Logo" className="h-40" />
+      </div>
       <div
         className={classNames({
           "main-container": true,
@@ -53,7 +56,7 @@ const Menu = () => {
                 "rounded-xl": active,
               })}
             >
-            <Content />
+              <Content />
             </div>
           </header>
         </div>
@@ -68,7 +71,7 @@ const Menu = () => {
           hidden: !active,
         })}
       >
-        <MenuLinks active={active}/>
+        <MenuLinks active={active} />
       </div>
     </div>
   );
