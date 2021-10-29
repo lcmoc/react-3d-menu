@@ -46,8 +46,8 @@ const DescriptionTriangle = () => {
   const TextSideC = () => {
     return (
       <div>
-        <h3 className="text-blue-600">hypotenuse C</h3>
-        <p>description for hypotenuse C</p>
+        <h3 className="text-blue-600">Hypotenuse C</h3>
+        <p>description for Hypotenuse C</p>
       </div>
     );
   };
@@ -55,7 +55,7 @@ const DescriptionTriangle = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="flex flex-row items-center justify-around">
-        <div className="flex flex-col items-start mr-32">
+        <div className="flex flex-col items-start mr-28">
           <div
             onClick={() => handleTextSideA()}
             className={classNames(
