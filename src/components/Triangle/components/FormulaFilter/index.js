@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+
 import Fläche from "../Fläche";
-import Umfang from "../Umfang";
-import TriangleHight from "../TriangleHight";
 import { RightAngledTriangleType } from "../constans";
 import RightangledTriangleArea from "../RightAngledTriangle/components/Fläche/index";
+import TriangleHight from "../TriangleHight";
+import Umfang from "../Umfang";
 
 const FormulaFilter = ({ title, triangleType }) => {
   const [mathFilter, setMathFilter] = useState([]);
@@ -25,8 +26,6 @@ const FormulaFilter = ({ title, triangleType }) => {
     ) : (
       <RightangledTriangleArea />
     );
-
-  console.log("xxx", CurrentTriangleAreaCalculation);
 
   return (
     <div className="flex items-center justify-center flex-col mb-24 mt-16 w-full">

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import Fläche from "./components/Fläche/index";
+
 import DescriptionTriangle from "./components/DescriptionTriangle/index";
-import Umfang from "./components/Umfang/index";
 import DreicekIMG from "../../assets/DreieckIMG.jpeg";
-import RightAngledTriangle from "./components/RightAngledTriangle";
 import EquilateralTriangle from "./components/EquilateralTriangle/index";
+import Fläche from "./components/Fläche/index";
+import RightAngledTriangle from "./components/RightAngledTriangle";
 import TriangleHight from "./components/TriangleHight/index";
+import Umfang from "./components/Umfang/index";
+import { data } from "./data";
 
 const Triangle = () => {
   const [mathFilter, setMathFilter] = useState([]);
@@ -19,6 +21,26 @@ const Triangle = () => {
       }
       return [...prevState, event.target.name];
     });
+  };
+
+  const Checkbox = (props) => {
+    return(
+      <label
+      htmlFor={props?.id || props?.name || null}
+      className="text-lg text-gray-500 font-bold"
+    >
+      <input
+        type="checkbox"
+        name={props?.name || null}
+        id={props?.id || props.name || null}
+        onChange={(event) => handleCheckboxChange(event)}
+        className="mr-4"
+        checked={mathFilter.includes(props?.id || props?.name)}
+        key={`checkbox-${props?.name ? props.name : props?.id}`}
+      />
+      {props?.txt || null}
+    </label>  
+    )
   };
 
   return (
@@ -53,91 +75,15 @@ const Triangle = () => {
           className="flex flex-row justify-center border border-black rounded p-10"
         >
           <div className="flex flex-col mr-24">
-            <label
-              htmlFor="triangleArea"
-              className="text-lg text-gray-500 font-bold"
-            >
-              <input
-                type="checkbox"
-                name="triangleArea"
-                id="triangleArea"
-                onChange={(event) => handleCheckboxChange(event)}
-                className="mr-4"
-              />
-              Flächenberechnung
-            </label>
-            <label
-              htmlFor="triangleScope"
-              className="text-lg text-gray-500 font-bold"
-            >
-              <input
-                type="checkbox"
-                name="triangleScope"
-                id="triangleScope"
-                onChange={(event) => handleCheckboxChange(event)}
-                className="mr-4"
-              />
-              Umfang berechnen
-            </label>
-            <label
-              htmlFor="triangleHight"
-              className="text-lg text-gray-500 font-bold"
-            >
-              <input
-                type="checkbox"
-                name="triangleHight"
-                id="triangleHight"
-                onChange={(event) => handleCheckboxChange(event)}
-                className="mr-4"
-              />
-              Höhe berechnen
-            </label>
+            {data.map((item, index) => index < 3 ? <Checkbox id={item.id} name={item.name} txt={item.txt}/>: null)}
           </div>
           <div className="flex flex-col">
-            <label
-              htmlFor="equilateralTriangle"
-              className="text-lg text-gray-500 font-bold"
-            >
-              <input
-                type="checkbox"
-                name="equilateralTriangle"
-                id="equilateralTriangle"
-                onChange={(event) => handleCheckboxChange(event)}
-                className="mr-4"
-              />
-              Gleichseitiges Dreieck
-            </label>
-            <label
-              htmlFor="isoscelesTriangle"
-              className="text-lg text-gray-500 font-bold"
-            >
-              <input
-                type="checkbox"
-                name="isoscelesTriangle"
-                id="isoscelesTriangle"
-                onChange={(event) => handleCheckboxChange(event)}
-                className="mr-4"
-              />
-              Gleichschenkliches Dreieck
-            </label>
-            <label
-              htmlFor="rightAngledTriangle"
-              className="text-lg text-gray-500 font-bold"
-            >
-              <input
-                type="checkbox"
-                name="rightAngledTriangle"
-                id="rightAngledTriangle"
-                onChange={(event) => handleCheckboxChange(event)}
-                className="mr-4"
-              />
-              Rechtwinckliges Dreieck
-            </label>
+            {data.map((item, index) => index > 2 ? <Checkbox id={item.id} name={item.name} txt={item.txt}/>: null)}
           </div>
         </form>
       </div>
       <div className="bg-gray-100 border solid border-black">
-        {mathFilter.includes("triangleArea") ? <Fläche /> : null}
+      {mathFilter.includes("triangleArea") ? <Fläche /> : null}
         {mathFilter.includes("equilateralTriangle") ? (
           <EquilateralTriangle />
         ) : null}
