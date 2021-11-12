@@ -5,6 +5,7 @@ import { RightAngledTriangleType } from "../constans";
 import RightangledTriangleArea from "../RightAngledTriangle/components/Fläche/index";
 import TriangleHight from "../TriangleHight";
 import Umfang from "../Umfang";
+import { data } from "../../data"
 
 const FormulaFilter = ({ title, triangleType }) => {
   const [mathFilter, setMathFilter] = useState([]);
@@ -27,65 +28,43 @@ const FormulaFilter = ({ title, triangleType }) => {
       <RightangledTriangleArea />
     );
 
+  const Checkbox = (props) => {
+    return (
+      <div className="flex items-start justify-start flex-col p-2">
+        <label
+          htmlFor={`filter-${props?.id || props?.name}` || null}
+          className="text-lg text-gray-500 font-bold"
+        >
+          <input
+            type="checkbox"
+            name={`filter-${props?.name}` || null}
+            id={`filter-${props?.id || props?.name}` || null}
+            onChange={(event) => handleCheckboxChange(event)}
+            className="mr-4"
+            checked={mathFilter.includes(`filter-${props?.name || props.id}`)}
+            key={`checkbox-${props?.name ? props.name : props?.id}`}
+          />
+          {props?.txt || null}
+        </label>
+      </div>
+    );
+  };
+
   return (
     <div className="flex items-center justify-center flex-col mb-24 mt-16 w-full">
       <form
         action=""
         className="flex flex-row justify-between border border-black rounded"
       >
-        <div className="flex items-start justify-start flex-col p-2">
-          <label
-            htmlFor="triangleAreaFilter"
-            className="text-lg text-gray-500 font-bold"
-          >
-            <input
-              type="checkbox"
-              name="triangleAreaFilter"
-              id="triangleAreaFilter"
-              onChange={(event) => handleCheckboxChange(event)}
-              className="mr-4"
-            />
-            Fläche A
-          </label>
-        </div>
-        <div className="flex items-start justify-end flex-col p-2">
-          <label
-            htmlFor="highFilter"
-            className="text-lg text-gray-500 font-bold"
-          >
-            <input
-              type="checkbox"
-              name="highFilter"
-              id="highFilter"
-              onChange={(event) => handleCheckboxChange(event)}
-              className="mr-4"
-            />
-            Höhe h
-          </label>
-        </div>
-        <div className="flex items-start justify-start flex-col p-2">
-          <label
-            htmlFor="scopeFilter"
-            className="text-lg text-gray-500 font-bold"
-          >
-            <input
-              type="checkbox"
-              name="scopeFilter"
-              id="scopeFilter"
-              onChange={(event) => handleCheckboxChange(event)}
-              className="mr-4"
-            />
-            Umfang U
-          </label>
-        </div>
+        {data.map((item, index) => index < 3 ? <Checkbox id={item.id} name={item.name} txt={item.txt}/>: null)}
       </form>
-      {mathFilter.includes("triangleAreaFilter") ? (
+      {mathFilter.includes("filter-triangleArea") ? (
         <CurrentTriangleAreaCalculation />
       ) : null}
-      {mathFilter.includes("highFilter") ? (
+      {mathFilter.includes("filter-triangleHight") ? (
         <TriangleHight title={title} triangleType={triangleType} />
       ) : null}
-      {mathFilter.includes("scopeFilter") ? (
+      {mathFilter.includes("filter-triangleScope") ? (
         <Umfang title={title} triangleType={triangleType} />
       ) : null}
     </div>
