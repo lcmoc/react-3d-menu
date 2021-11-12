@@ -14,7 +14,7 @@ const Menu = () => {
   };
 
   return (
-    <div className={active ? "ContentContainer active" : "ContentContainer"}>
+    <div className={active ? "ContentContainer active" : "ContentContainer"} >
       <div className="w-full z-20 h-12 left-0 top-0 fixed">
         <div className="w-full flex justify-between items-center text-white">
           <KeyboardEventHandler
@@ -73,7 +73,7 @@ const Menu = () => {
           }
         )}
       >
-        <MenuLinks active={active} />
+        <MenuLinks />
       </div>
     </div>
   );
