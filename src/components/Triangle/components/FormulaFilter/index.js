@@ -32,17 +32,17 @@ const FormulaFilter = ({ title, triangleType }) => {
     return (
       <div className="flex items-start justify-start flex-col p-2">
         <label
-          htmlFor={`filter-${props?.id || props?.name}` || null}
+          htmlFor={triangleType + `-filter-${props?.id || props?.name}` || null}
           className="text-lg text-gray-500 font-bold"
         >
           <input
             type="checkbox"
-            name={`filter-${props?.name}` || null}
-            id={`filter-${props?.id || props?.name}` || null}
+            name={triangleType + `-filter-${props?.name}` || null}
+            id={triangleType + `-filter-${props?.id || props?.name}` || null}
             onChange={(event) => handleCheckboxChange(event)}
             className="mr-4"
-            checked={mathFilter.includes(`filter-${props?.name || props.id}`)}
-            key={`checkbox-${props?.name ? props.name : props?.id}`}
+            checked={mathFilter.includes(triangleType + `-filter-${props?.name || props.id}`)}
+            key={triangleType +`-checkbox-${props?.name ? props.name : props?.id}`}
           />
           {props?.txt || null}
         </label>
@@ -58,13 +58,13 @@ const FormulaFilter = ({ title, triangleType }) => {
       >
         {data.map((item, index) => index < 3 ? <Checkbox id={item.id} name={item.name} txt={item.txt}/>: null)}
       </form>
-      {mathFilter.includes("filter-triangleArea") ? (
+      {mathFilter.includes(triangleType + "-filter-triangleArea") ? (
         <CurrentTriangleAreaCalculation />
       ) : null}
-      {mathFilter.includes("filter-triangleHight") ? (
+      {mathFilter.includes(triangleType + "-filter-triangleHight") ? (
         <TriangleHight title={title} triangleType={triangleType} />
       ) : null}
-      {mathFilter.includes("filter-triangleScope") ? (
+      {mathFilter.includes(triangleType + "-filter-triangleScope") ? (
         <Umfang title={title} triangleType={triangleType} />
       ) : null}
     </div>

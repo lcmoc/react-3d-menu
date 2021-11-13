@@ -4,6 +4,7 @@ import DescriptionTriangle from "./components/DescriptionTriangle/index";
 import DreicekIMG from "../../assets/DreieckIMG.jpeg";
 import EquilateralTriangle from "./components/EquilateralTriangle/index";
 import Fläche from "./components/Fläche/index";
+import IsoscelesTriangle from "./components/IsoscelesTriangle";
 import RightAngledTriangle from "./components/RightAngledTriangle";
 import TriangleHight from "./components/TriangleHight/index";
 import Umfang from "./components/Umfang/index";
@@ -24,23 +25,25 @@ const Triangle = () => {
   };
 
   const Checkbox = (props) => {
-    return(
+    return (
       <label
-      htmlFor={props?.id || props?.name || null}
-      className="text-lg text-gray-500 font-bold"
-    >
-      <input
-        type="checkbox"
-        name={props?.name || null}
-        id={props?.id || props.name || null}
-        onChange={(event) => handleCheckboxChange(event)}
-        className="mr-4"
-        checked={mathFilter.includes(props?.id || props?.name)}
-        key={`checkbox-${props?.name ? props.name : props?.id}`}
-      />
-      {props?.txt || null}
-    </label>  
-    )
+        htmlFor={props?.id || props?.name || null}
+        className="text-lg text-gray-500 font-bold"
+      >
+        <input
+          type="checkbox"
+          name={props?.name || null}
+          id={props?.id || props.name || null}
+          onChange={(event) => handleCheckboxChange(event)}
+          className="mr-4"
+          checked={mathFilter.includes(props?.id || props?.name)}
+          key={`checkbox-${props?.name ? props.name : props?.id}`}
+        />
+        {props?.txt || null}
+      </label>
+    );
+
+    
   };
 
   return (
@@ -75,15 +78,23 @@ const Triangle = () => {
           className="flex flex-row justify-center border border-black rounded p-10"
         >
           <div className="flex flex-col mr-24">
-            {data.map((item, index) => index < 3 ? <Checkbox id={item.id} name={item.name} txt={item.txt}/>: null)}
+            {data.map((item, index) =>
+              index < 3 ? (
+                <Checkbox id={item.id} name={item.name} txt={item.txt} />
+              ) : null
+            )}
           </div>
           <div className="flex flex-col">
-            {data.map((item, index) => index > 2 ? <Checkbox id={item.id} name={item.name} txt={item.txt}/>: null)}
+            {data.map((item, index) =>
+              index > 2 ? (
+                <Checkbox id={item.id} name={item.name} txt={item.txt} />
+              ) : null
+            )}
           </div>
         </form>
       </div>
       <div className="bg-gray-100 border solid border-black">
-      {mathFilter.includes("triangleArea") ? <Fläche /> : null}
+        {mathFilter.includes("triangleArea") ? <Fläche /> : null}
         {mathFilter.includes("equilateralTriangle") ? (
           <EquilateralTriangle />
         ) : null}
@@ -93,6 +104,9 @@ const Triangle = () => {
         {mathFilter.includes("triangleScope") ? <Umfang /> : null}
         {/* TODO: Als letztes anzeigen */}
         {mathFilter.includes("triangleHight") ? <TriangleHight /> : null}
+        {mathFilter.includes("isoscelesTriangle") ? (
+          <IsoscelesTriangle />
+        ) : null}
       </div>
     </>
   );
