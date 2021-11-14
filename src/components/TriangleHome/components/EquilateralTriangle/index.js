@@ -3,6 +3,7 @@ import "./styles.css";
 import React, { useState } from "react";
 import {
   nameArea,
+  nameHight,
   nameScope,
   nameSideA,
   nameSideB,
@@ -47,6 +48,14 @@ const EquilateralTriangle = () => {
       setSideA(sideLength);
       setHight(Math.sqrt(3) / 2 * sideLength);
       setScope(sideLength * 3)
+    } else if (name === nameHight) {
+      const sideLength = value / Math.sqrt(3) * 2;
+      setHight(value)
+      setSideC(sideLength);
+      setSideB(sideLength);
+      setSideA(sideLength);
+      setScope(sideLength * 3)
+      setArea((sideLength * value) / 2);
     }
   };
 

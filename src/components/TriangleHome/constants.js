@@ -5,3 +5,4 @@ export const nameSideB = 'sideB';
 export const nameSideA = 'sideA';
 export const nameArea = 'area';
 export const nameScope = 'scope';
+export const nameHight = 'hight';
