@@ -1,0 +1,81 @@
+.Triangle {
+  width: 0px;
+  height: 0px;
+  -webkit-transform: rotate(360deg);
+  border-style: solid;
+  border-width: 0 225px 389.7px 225px;
+  border-color: transparent transparent #19589c transparent;
+  position: relative;
+}
+
+.InputRadiusOne {
+  position: absolute;
+  top: 60px;
+  left: -20px;
+  background-color: #19589c;
+  z-index: 2;
+}
+
+.InputRadiusTwo {
+  position: absolute;
+  top: 340px;
+  left: -170px;
+}
+
+.InputRadiusThree {
+  position: absolute;
+  top: 340px;
+  left: 120px;
+}
+
+.SideC {
+  position: absolute;
+  top: 410px;
+  left: -43px;
+}
+
+.SideB {
+  position: absolute;
+  top: 200px;
+  left: -265px;
+}
+
+.SideA {
+  position: absolute;
+  top: 200px;
+  left: 165px;
+}
+
+.Hight {
+  position: absolute;
+  top: 200px;
+  left: -49px;
+  background-color: #19589c;
+  z-index: 2;
+}
+
+.VerticalLine {
+  position: absolute;
+  left: -2px;
+  border-left: 3px dashed rgb(0, 174, 255);
+  height: 390px;
+  z-index: 1;
+}
+
+.CornerA {
+  position: absolute;
+  top: 410px;
+  left: -260px;
+}
+
+.CornerC {
+  position: absolute;
+  top: 410px;
+  left: 250px;
+}
+
+.CornerB {
+  position: absolute;
+  left: -8px;
+  top: -45px;
+}
