@@ -21,9 +21,9 @@ const EquilateralTriangle = () => {
   const handleSide = (event) => {
     const value = event.target.value;
     const name = event.target.name;
+    const hight = ((value / 2) * Math.sqrt(3));
 
     if (name && [nameSideA, nameSideB, nameSideC].includes(name)) {
-      const hight = Math.round((value / 2) * Math.sqrt(3));
       setSideC(value);
       setSideB(value);
       setSideA(value);
@@ -31,14 +31,22 @@ const EquilateralTriangle = () => {
       setHight(hight);
       setArea((value * hight) / 2);
     } else if (name === nameScope) {
-      const hight = Math.round((value / 2) * Math.sqrt(3)) / 3;
       const sideLength = Math.round(value / 3);
+      const currentHight = hight / 3
       setScope(value);
       setSideC(sideLength);
       setSideB(sideLength);
       setSideA(sideLength);
-      setHight(hight);
-      setArea(Math.round((value * hight) / 2));
+      setHight(currentHight);
+      setArea((sideLength * currentHight) / 2);
+    } else if (name === nameArea) {
+      const sideLength = Math.sqrt(value * 4 / Math.sqrt(3));
+      setArea(value) 
+      setSideC(sideLength);
+      setSideB(sideLength);
+      setSideA(sideLength);
+      setHight(Math.sqrt(3) / 2 * sideLength);
+      setScope(sideLength * 3)
     }
   };
 
@@ -89,7 +97,7 @@ const EquilateralTriangle = () => {
         />
         <input
           type="text"
-          name="area"
+          name="hight"
           className="Hight bg-transparent focus:border-transparent w-24 text-center"
           onChange={(event) => handleSide(event)}
           value={hight}
