@@ -1,4 +1,4 @@
-.Triangle {
+.EquTriangle {
   width: 0px;
   height: 0px;
   -webkit-transform: rotate(360deg);
@@ -28,19 +28,19 @@
   left: 120px;
 }
 
-.InputSideC {
+.EquSideC {
   position: absolute;
   top: 410px;
   left: -43px;
 }
 
-.InputSideB {
+.EquSideB {
   position: absolute;
   top: 200px;
   left: -265px;
 }
 
-.InputSideA {
+.EquSideA {
   position: absolute;
   top: 200px;
   left: 165px;
@@ -62,26 +62,20 @@
   z-index: 1;
 }
 
-.CornerA {
+.EquCornerA {
   position: absolute;
   top: 410px;
   left: -260px;
 }
 
-.CornerC {
+.EquCornerC {
   position: absolute;
   top: 410px;
   left: 250px;
 }
 
-.CornerB {
+.EquCornerB {
   position: absolute;
   left: -8px;
   top: -45px;
-}
-
-.SideC {
-  position: absolute;
-  top: 225px;
-  left: -240px;
 }

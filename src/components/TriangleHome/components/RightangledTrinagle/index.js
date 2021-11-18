@@ -84,7 +84,7 @@ const RightAngledTriangle = () => {
           value={radiusValue}
           disabled
         />
-        <label htmlFor="sideB" className="InputSideC text-center">
+        <label htmlFor="sideC" className="InputSideC text-center">
           <input
             type="number"
             name="sideC"

@@ -61,7 +61,7 @@ const EquilateralTriangle = () => {
 
   return (
     <div className="flex items-center justify-center flex-col">
-      <div className="Triangle mt-32 mb-20">
+      <div className="EquTriangle mt-40 mb-20">
         <input
           type="number"
           name="inputRadiusOne"
@@ -83,7 +83,7 @@ const EquilateralTriangle = () => {
           value={radiusValue}
           disabled
         />
-        <label htmlFor="sideB" className="InputSideC text-center">
+        <label htmlFor="EqusideC" className="EquSideC text-center">
           <input
             type="number"
             name="sideC"
@@ -93,7 +93,7 @@ const EquilateralTriangle = () => {
           />
           <p className="text-lg text-gray-500 font-bold">Seite c</p>
         </label>
-        <label htmlFor="sideB" className="InputSideB text-center">
+        <label htmlFor="sideB" className="EquSideB text-center">
           <input
             type="number"
             name="sideB"
@@ -103,7 +103,7 @@ const EquilateralTriangle = () => {
           />
           <p className="text-lg text-gray-500 font-bold">Seite b</p>
         </label>
-        <label htmlFor="sideA" className="InputSideA text-center">
+        <label htmlFor="sideA" className="EquSideA text-center">
           <input
             type="number"
             name="sideA"
@@ -121,9 +121,9 @@ const EquilateralTriangle = () => {
           value={hight}
         />
         <div className="VerticalLine"></div>
-        <p className="CornerA text-2xl text-gray-500 font-bold">A</p>
-        <p className="CornerB text-2xl text-gray-500 font-bold">B</p>
-        <p className="CornerC text-2xl text-gray-500 font-bold">C</p>
+        <p className="EquCornerA text-2xl text-gray-500 font-bold">A</p>
+        <p className="EquCornerB text-2xl text-gray-500 font-bold">B</p>
+        <p className="EquCornerC text-2xl text-gray-500 font-bold">C</p>
       </div>
       <div className="flex items-center justify-center mb-32">
         <p className="text-lg text-gray-500 font-bold pr-5">
