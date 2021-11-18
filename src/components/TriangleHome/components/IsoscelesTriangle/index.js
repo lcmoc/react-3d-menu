@@ -11,7 +11,7 @@ import {
   radiusValue,
 } from "../../constants";
 
-const RightAngledTriangle = () => {
+const IsoscelesTriangle = () => {
   const [sideC, setSideC] = useState();
   const [sideB, setSideB] = useState();
   const [sideA, setSideA] = useState();
@@ -61,30 +61,29 @@ const RightAngledTriangle = () => {
 
   return (
     <div className="flex items-center justify-center flex-col">
-      <div className="border-black relative mt-20">
-        <div className="Triangle mt-40 mb-24"></div>
+      <div className="IsoTriangle mt-40 mb-28">
         <input
           type="number"
-          name="RightAngledRadiusOne"
-          className="RightAngledRadiusOne bg-transparent w-10 text-center"
+          name="inputRadiusOne"
+          className="IsoRadiusOne bg-transparent w-10 text-center"
           value={radiusValue}
           disabled
         />
         <input
           type="number"
-          name="RightAngledRadiusTwo"
-          className="RightAngledRadiusTwo bg-transparent w-10 text-center"
+          name="inputRadiusTwo"
+          className="IsoRadiusTwo bg-transparent w-10 text-center"
           value={radiusValue}
           disabled
         />
         <input
           type="number"
-          name="RightAngledRadiusThree"
-          className="RightAngledRadiusThree bg-transparent w-10 text-center"
+          name="inputRadiusThree"
+          className="IsoRadiusThree bg-transparent w-10 text-center"
           value={radiusValue}
           disabled
         />
-        <label htmlFor="sideC" className="InputSideC text-center">
+        <label htmlFor="sideC" className="IsoSideC text-center">
           <input
             type="number"
             name="sideC"
@@ -94,7 +93,7 @@ const RightAngledTriangle = () => {
           />
           <p className="text-lg text-gray-500 font-bold">Seite c</p>
         </label>
-        <label htmlFor="sideB" className="InputSideB text-center">
+        <label htmlFor="sideB" className="IsoSideB text-center">
           <input
             type="number"
             name="sideB"
@@ -104,7 +103,7 @@ const RightAngledTriangle = () => {
           />
           <p className="text-lg text-gray-500 font-bold">Seite b</p>
         </label>
-        <label htmlFor="sideA" className="InputSideA text-center">
+        <label htmlFor="sideA" className="IsoSideA text-center">
           <input
             type="number"
             name="sideA"
@@ -114,21 +113,19 @@ const RightAngledTriangle = () => {
           />
           <p className="text-lg text-gray-500 font-bold">Seite a</p>
         </label>
-        <label htmlFor="hight" className="RightAngledHight text-center">
-          <p className="text-lg">Höhe h</p>
-          <input
-            type="number"
-            name="hight"
-            className="bg-transparent focus:border-transparent w-24 text-center"
-            onChange={(event) => handleSide(event)}
-            value={hight}
-          />
-        </label>
-        <p className="CornerA text-2xl text-gray-500 font-bold">A</p>
-        <p className="CornerB text-2xl text-gray-500 font-bold">B</p>
-        <p className="CornerC text-2xl text-gray-500 font-bold">C</p>
+        <input
+          type="number"
+          name="hight"
+          className="IsoHight bg-transparent focus:border-transparent w-24 text-center"
+          onChange={(event) => handleSide(event)}
+          value={hight}
+        />
+        <div className="IsoVerticalLine"></div>
+        <p className="IsoCornerA text-2xl text-gray-500 font-bold">A</p>
+        <p className="IsoCornerB text-2xl text-gray-500 font-bold">B</p>
+        <p className="IsoCornerC text-2xl text-gray-500 font-bold">C</p>
       </div>
-      <div className="flex items-center justify-center ml-20 mb-24">
+      <div className="flex items-center justify-center ml-20 mb-32">
         <p className="text-lg text-gray-500 font-bold">
           Umfang U =
           <input
@@ -154,4 +151,4 @@ const RightAngledTriangle = () => {
   );
 };
 
-export default RightAngledTriangle;
+export default IsoscelesTriangle;
