@@ -61,7 +61,7 @@ const EquilateralTriangle = () => {
 
   return (
     <div className="flex items-center justify-center flex-col">
-      <div className="EquTriangle mt-40 mb-20">
+      <div className="EquTriangle mt-40 mb-28">
         <input
           type="number"
           name="inputRadiusOne"
@@ -125,13 +125,13 @@ const EquilateralTriangle = () => {
         <p className="EquCornerB text-2xl text-gray-500 font-bold">B</p>
         <p className="EquCornerC text-2xl text-gray-500 font-bold">C</p>
       </div>
-      <div className="flex items-center justify-center mb-32">
-        <p className="text-lg text-gray-500 font-bold pr-5">
+      <div className="flex items-center justify-center ml-20 mb-32">
+        <p className="text-lg text-gray-500 font-bold">
           Umfang U =
           <input
             type="number"
             name="scope"
-            className="bg-transparent focus:border-transparent w-14 text-start p-1"
+            className="bg-transparent focus:border-transparent text-start p-1 w-24 mr-5"
             onChange={(event) => handleSide(event)}
             value={scope}
           />
@@ -141,7 +141,7 @@ const EquilateralTriangle = () => {
           <input
             type="number"
             name="area"
-            className="bg-transparent focus:border-transparent text-start w-14 p-1"
+            className="bg-transparent focus:border-transparent text-start p-1 w-24"
             onChange={(event) => handleSide(event)}
             value={area}
           />
