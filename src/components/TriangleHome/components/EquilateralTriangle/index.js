@@ -65,21 +65,21 @@ const EquilateralTriangle = () => {
         <input
           type="number"
           name="inputRadiusOne"
-          className="InputRadiusOne bg-transparent w-10 text-center"
+          className="InputRadiusOne bg-transparent w-10 text-center text-white"
           value={radiusValue}
           disabled
         />
         <input
           type="number"
           name="inputRadiusTwo"
-          className="InputRadiusTwo bg-transparent w-10 text-center"
+          className="InputRadiusTwo bg-transparent w-10 text-center text-white"
           value={radiusValue}
           disabled
         />
         <input
           type="number"
           name="inputRadiusThree"
-          className="InputRadiusThree bg-transparent w-10 text-center"
+          className="InputRadiusThree bg-transparent w-10 text-center text-white"
           value={radiusValue}
           disabled
         />
@@ -116,7 +116,7 @@ const EquilateralTriangle = () => {
         <input
           type="number"
           name="hight"
-          className="Hight bg-transparent focus:border-transparent w-24 text-center"
+          className="Hight bg-transparent focus:border-transparent w-24 text-center text-white"
           onChange={(event) => handleSide(event)}
           value={hight}
         />

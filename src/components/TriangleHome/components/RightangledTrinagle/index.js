@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import {
   nameArea,
   nameHight,
+  nameRightAngledRadiusOne,
+  nameRightAngledRadiusThree,
   nameScope,
   nameSideA,
   nameSideB,
   nameSideC,
-  radiusValue,
+  rightAngledRadius,
+  wholeRadius,
 } from "../../constants";
 
 const RightAngledTriangle = () => {
@@ -18,6 +21,9 @@ const RightAngledTriangle = () => {
   const [scope, setScope] = useState(0);
   const [hight, setHight] = useState(0);
   const [area, setArea] = useState(0);
+  const [radiusOne, setRadiusOne] = useState(0);
+  const [radiusThree, setRadiusThree] = useState(0);
+  const [error, setError] = useState();
 
   const handleSide = (event) => {
     const value = event.target.value;
@@ -59,6 +65,36 @@ const RightAngledTriangle = () => {
     }
   };
 
+  const handleRadius = (event) => {
+    const value = event.target.value;
+    const name = event.target.name;
+    const isToSmall = value > 0 ? true : false;
+    const isToBig = value < 89 ? true : false;
+
+    if (name === nameRightAngledRadiusOne) {
+      setRadiusOne(value);
+      if (isToSmall && isToBig) {
+        setError("");
+        setRadiusThree(wholeRadius - rightAngledRadius - value);
+      } else if (!isToSmall) {
+        setError("Der obere Radius ist zu klein");
+      } else if (!isToBig) {
+        setError("Der obere Radius ist zu gross");
+      }
+    } else if (name === nameRightAngledRadiusThree) {
+      setRadiusThree(value);
+      setError("");
+      if ((isToSmall) && (isToBig)) {
+        setError("");
+        setRadiusOne(wholeRadius - rightAngledRadius - value);
+      } else if (!isToSmall) {
+        setError("Der untere Radius ist zu klein");
+      } else if (!isToBig) {
+        setError("Der untere Radius ist zu gross");
+      }
+    }
+  };
+
   return (
     <div className="flex items-center justify-center flex-col">
       <div className="border-black relative mt-20">
@@ -67,22 +103,22 @@ const RightAngledTriangle = () => {
           type="number"
           name="RightAngledRadiusOne"
           className="RightAngledRadiusOne bg-transparent w-10 text-center"
-          value={radiusValue}
-          disabled
+          value={radiusOne}
+          onChange={(event) => handleRadius(event)}
         />
         <input
           type="number"
           name="RightAngledRadiusTwo"
           className="RightAngledRadiusTwo bg-transparent w-10 text-center"
-          value={radiusValue}
+          value={rightAngledRadius}
           disabled
         />
         <input
           type="number"
           name="RightAngledRadiusThree"
           className="RightAngledRadiusThree bg-transparent w-10 text-center"
-          value={radiusValue}
-          disabled
+          value={radiusThree}
+          onChange={(event) => handleRadius(event)}
         />
         <label htmlFor="sideC" className="InputSideC text-center">
           <input
@@ -128,7 +164,7 @@ const RightAngledTriangle = () => {
         <p className="CornerB text-2xl text-gray-500 font-bold">B</p>
         <p className="CornerC text-2xl text-gray-500 font-bold">C</p>
       </div>
-      <div className="flex items-center justify-center ml-20 mb-24">
+      <div className="flex items-center justify-center ml-20 mb-10">
         <p className="text-lg text-gray-500 font-bold">
           Umfang U =
           <input
@@ -150,6 +186,7 @@ const RightAngledTriangle = () => {
           />
         </p>
       </div>
+      <p className="text-lg text-red-500 font-bold mb-24">{error}</p>
     </div>
   );
 };
