@@ -18,7 +18,7 @@ const MenuLinks = () => {
   );
 
   return (
-    <div className="flex items-center justify-center bg-blue-900 w-80 rounded-3xl bg-opacity-80 text-white">
+    <div className="flex items-center justify-center bg-blue-900 rounded-3xl bg-opacity-80 text-white w-auto">
       <Icon href="/dreieck" src={TrianglePng} alt="triangle" txt="Dreieck"/>
       <Icon href="/" src="https://assets.codepen.io/907368/home.svg" alt="home" txt="Home"/>
       <Icon href="/sinus" src={SinusPng} alt="sinus" txt="Trigonomie"/>
