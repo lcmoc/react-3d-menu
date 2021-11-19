@@ -1,17 +1,8 @@
 .HomeImage {
-  /* background-image: url(../../assets/background.jpeg); */
-  /* background: radial-gradient(circle, red, blue); */
-  /* background: radial-gradient(circle, blue, red);
-    background: radial-gradient(circle, white, blue); */
-  /* background: rgb(230, 20, 62) 100%;
-  background: radial-gradient(circle, rgb(230, 20, 62) 0%, rgb(63,94,251) 100%); */
-}
-
-.custom-shape-divider-top-1636014374 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+  background-image: url(../../assets/Background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
 }
