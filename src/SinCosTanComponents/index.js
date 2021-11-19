@@ -30,7 +30,7 @@ function SinCosTanComponents() {
   const [updateCount, setUpdateCount] = useState(0);
 
   useEffect(() => {
-    document.title = 'Trig Assist';
+    document.title = 'Geo Rechner';
   }, []);
 
   const updateTrigValues = (radians) => {

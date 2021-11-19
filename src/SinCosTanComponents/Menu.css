@@ -1,6 +1,6 @@
 /* Position and sizing of burger button */
 .settings-menu .bm-burger-button {
-  position: fixed;
+  position: relative;
   width: 36px;
   height: 30px;
   left: 36px;
@@ -8,7 +8,7 @@
 }
 
 .values-menu .bm-burger-button {
-  position: fixed;
+  position: relative;
   width: 36px;
   height: 30px;
   right: 36px;
@@ -23,7 +23,7 @@
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: rgb(161, 161, 161);
+  background: rgb(206, 43, 43);
 }
 
 /* Color/shape of burger icon bars on hover*/
@@ -47,7 +47,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: rgb(64, 70, 84);
+  background: rgb(245, 245, 245);
   font: 18px Consolas;
   padding: 1em 1em 0;
 }
@@ -98,7 +98,7 @@ div.underlined {
 
 /* Labels */
 label {
-  color: rgb(255, 255, 255);
+  color: rgb(173, 103, 103);
 }
 
 label.centered {

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import CanvasDrawer from './utils/CanvasDrawer.js';
-import './Canvas.css';
 
 function Canvas(props) {
   const canvas = useRef(null);
@@ -55,7 +54,7 @@ function Canvas(props) {
   }, [props.updateCount]);
 
   return (
-    <canvas ref={canvas} width={width} height={height} className="canvas">
+    <canvas ref={canvas} width={width} height={height} className="block">
       <p>Your browser doesn"t support canvas.</p>
     </canvas>
   );
