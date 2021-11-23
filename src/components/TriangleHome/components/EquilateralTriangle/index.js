@@ -24,43 +24,42 @@ const EquilateralTriangle = () => {
     const name = event.target.name;
     const hight = (value / 2) * Math.sqrt(3);
 
-    if (name && [nameSideA, nameSideB, nameSideC].includes(name)) {
+    const setSides = (value) => {
       setSideC(value);
       setSideB(value);
       setSideA(value);
+    }
+
+    if (name && [nameSideA, nameSideB, nameSideC].includes(name)) {
+      setSides(value);
       setScope(value * 3);
       setHight(hight);
       setArea((value * hight) / 2);
     } else if (name === nameScope) {
       const sideLength = Math.round(value / 3);
       const currentHight = hight / 3;
+
+      setSides(sideLength);
       setScope(value);
-      setSideC(sideLength);
-      setSideB(sideLength);
-      setSideA(sideLength);
       setHight(currentHight);
       setArea((sideLength * currentHight) / 2);
     } else if (name === nameArea) {
       const sideLength = Math.sqrt((value * 4) / Math.sqrt(3));
       setArea(value);
-      setSideC(sideLength);
-      setSideB(sideLength);
-      setSideA(sideLength);
+      setSides(sideLength);
       setHight((Math.sqrt(3) / 2) * sideLength);
       setScope(sideLength * 3);
     } else if (name === nameHight) {
       const sideLength = (value / Math.sqrt(3)) * 2;
       setHight(value);
-      setSideC(sideLength);
-      setSideB(sideLength);
-      setSideA(sideLength);
+      setSides(sideLength);
       setScope(sideLength * 3);
       setArea((sideLength * value) / 2);
     }
   };
 
   return (
-    <div className="flex items-center justify-center flex-col">
+    <div className="MainContainer">
       <div className="EquTriangle mt-40 mb-28">
         <input
           type="number"

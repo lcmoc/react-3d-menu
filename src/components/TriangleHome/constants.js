@@ -12,3 +12,7 @@ export const nameHight = 'hight';
 export const nameRightAngledRadiusOne = 'RightAngledRadiusOne'
 export const nameRightAngledRadiusTwo = 'RightAngledRadiusTwo'
 export const nameRightAngledRadiusThree = 'RightAngledRadiusThree'
+
+export const nameRadiusAlpha = "radiusAlpha"
+export const nameRadiusBeta = "radiusBeta"
+export const nameRadiusGamma = "radiusGamma"

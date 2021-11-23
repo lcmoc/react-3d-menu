@@ -68,13 +68,13 @@
   left: -180px;
 }
 
-.IsoCornerC {
+.IsoCornerB {
   position: absolute;
   top: 410px;
   left: 170px;
 }
 
-.IsoCornerB {
+.IsoCornerC {
   position: absolute;
   left: -8px;
   top: -45px;

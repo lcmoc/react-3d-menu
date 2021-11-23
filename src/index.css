@@ -14,3 +14,13 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@layer components{
+  .p-text {
+    @apply text-lg text-gray-500 font-bold
+  }
+
+  .MainContainer {
+    @apply flex flex-col items-center justify-center
+  }
+}
