@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import classNames from "classnames";
-import KeyboardEventHandler from "react-keyboard-event-handler";
-import Content from "../Content";
-import MenuLinks from "./components/MenuLinks";
 import "./styles.css";
+
+import React, { useState } from "react";
+
+import Content from "../Content";
+import KeyboardEventHandler from "react-keyboard-event-handler";
 import Logo from "../../assets/Logo.png";
+import MenuLinks from "./components/MenuLinks";
+import classNames from "classnames";
 
 const Menu = () => {
   const [active, setActive] = useState(false);
