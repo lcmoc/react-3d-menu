@@ -16,3 +16,6 @@ export const nameRightAngledRadiusThree = 'RightAngledRadiusThree'
 export const nameRadiusAlpha = "radiusAlpha"
 export const nameRadiusBeta = "radiusBeta"
 export const nameRadiusGamma = "radiusGamma"
+
+export const round = (number) => Math.round((number + Number.EPSILON) * 100) / 100;
+export const powerOfTwo = (number) => Math.pow(number, 2);

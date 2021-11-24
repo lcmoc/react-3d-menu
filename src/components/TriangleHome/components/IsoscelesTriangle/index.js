@@ -11,6 +11,8 @@ import {
   nameSideA,
   nameSideB,
   nameSideC,
+  powerOfTwo,
+  round,
   wholeRadius,
 } from "../../constants";
 
@@ -19,29 +21,24 @@ import classNames from "classnames";
 const IsoscelesTriangle = () => {
   const [dimensions, setDimensions] = useState({});
   const [radiusDimensions, setRadiusDimensions] = useState({});
-  const [scope, setScope] = useState(0);
-  const [hight, setHight] = useState(10);
-  const [area, setArea] = useState(0);
-  const [errorSides, setErrorSides] = useState();
-
-  const powerOfTwo = (number) => {
-    return Math.pow(number, 2);
-  };
+  const [scope, setScope] = useState();
+  const [hight, setHight] = useState();
+  const [area, setArea] = useState();
 
   const handleSides = (event) => {
     const value = event?.target?.value;
     const name = event?.target?.name;
-
+    
     if ([nameSideA, nameSideB].includes(name)) {
       setDimensions({ ...dimensions, a: value, b: value });
     } else if (name === nameSideC && value !== dimensions.a) {
       setDimensions({ ...dimensions, c: value });
-    } else if(area && hight) {
-      setDimensions({...dimensions, c: area * 2 / hight})
-    } else {
-      setErrorSides(
-        "Die Seite C darf nicht so gross sein wie die Seiten A und B"
-      );
+      handleSides();
+    } else if (area && hight) {
+      setDimensions({ ...dimensions, c: (area * 2) / hight });
+    } else if (scope && dimensions.c) {
+      const currenValue = (scope - dimensions.c) / 2;
+      setDimensions({a: currenValue, b: currenValue})
     }
   };
 
@@ -64,10 +61,14 @@ const IsoscelesTriangle = () => {
   const calculateHight = () => {
     if (dimensions.a && dimensions.c) {
       setHight(
-        Math.sqrt((4 * powerOfTwo(dimensions.a) - powerOfTwo(dimensions.c)) / 4)
+        round(
+          Math.sqrt(
+            (4 * powerOfTwo(dimensions.a) - powerOfTwo(dimensions.c)) / 4
+          )
+        )
       );
     } else if (dimensions.c && area) {
-      setHight((area * 2) / dimensions.c);
+      setHight(round((area * 2) / dimensions.c));
     }
   };
 
@@ -77,7 +78,16 @@ const IsoscelesTriangle = () => {
       calculateHight();
       handleSides();
     } else if (dimensions.c && hight) {
-      setArea((hight * dimensions.c) / 2);
+      setArea(round((hight * dimensions.c) / 2));
+    }
+  };
+
+  const handleScope = (value, name) => {
+    if (name === nameScope) {
+      handleSides();
+      setScope(value);
+    } else if (dimensions.a && dimensions.c) {
+      setScope(round(dimensions.a * 2 + parseInt(dimensions.c, 10)));
     }
   };
 
@@ -85,7 +95,7 @@ const IsoscelesTriangle = () => {
     if (dimensions.a || dimensions.c || dimensions.b) {
       calculateHight();
       calculateArea();
-      setScope(dimensions.a * 2 + parseInt(dimensions.c, 10));
+      handleScope();
     }
   }, [dimensions.a, dimensions.b, dimensions.c]);
 
@@ -101,6 +111,8 @@ const IsoscelesTriangle = () => {
       handleRadius(event);
     } else if (name === nameArea) {
       calculateArea(value, name);
+    } else if (name === nameScope) {
+      handleScope(value, name);
     }
   };
 
@@ -112,7 +124,7 @@ const IsoscelesTriangle = () => {
       <div className="IsoTriangle mt-32 mb-28">
         <input
           type="number"
-          name={nameRadiusGamma}
+          namee={nameRadiusGamma}
           className="IsoRadiusOne bg-transparent w-10 text-center text-white placeholder-white"
           value={radiusDimensions.gamma}
           onChange={(event) => handleCalculations(event)}
@@ -138,21 +150,14 @@ const IsoscelesTriangle = () => {
           <input
             type="number"
             name={nameSideC}
-            className={classNames(
-              "border border-gray-500 bg-transparent w-24 text-center rounded",
-              {
-                "border-red-500 focus:border-red-500 text-red-500": errorSides,
-              }
-            )}
+            className="border border-gray-500 bg-transparent w-24 text-center rounded"
             onChange={(event) => {
               handleCalculations(event);
             }}
             value={dimensions.c}
           />
           <p
-            className={classNames("text-lg text-gray-500 font-bold", {
-              "text-red-500": errorSides,
-            })}
+            className="text-lg text-gray-500 font-bold"
           >
             Seite c
           </p>
@@ -161,19 +166,12 @@ const IsoscelesTriangle = () => {
           <input
             type="number"
             name={nameSideB}
-            className={classNames(
-              "border border-gray-500 bg-transparent w-24 text-center rounded",
-              {
-                "border-red-500 focus:border-red-500 text-red-500": errorSides,
-              }
-            )}
+            className= "border border-gray-500 bg-transparent w-24 text-center rounded"
             onChange={(event) => handleCalculations(event)}
             value={dimensions.b}
           />
           <p
-            className={classNames("text-lg text-gray-500 font-bold", {
-              "text-red-500": errorSides,
-            })}
+            className="text-lg text-gray-500 font-bold"
           >
             Seite b
           </p>
@@ -184,17 +182,12 @@ const IsoscelesTriangle = () => {
             name={nameSideA}
             className={classNames(
               "border border-gray-500 bg-transparent w-24 text-center rounded",
-              {
-                "border-red-500 focus:border-red-500 text-red-500": errorSides,
-              }
             )}
             onChange={(event) => handleCalculations(event)}
             value={dimensions.a}
           />
           <p
-            className={classNames("text-lg text-gray-500 font-bold", {
-              "text-red-500": errorSides,
-            })}
+            className="text-lg text-gray-500 font-bold"
           >
             Seite a
           </p>
@@ -233,7 +226,7 @@ const IsoscelesTriangle = () => {
           />
         </p>
       </div>
-      <p className="text-lg text-red-500 font-bold mb-20">{errorSides}</p>
+      <p className="text-lg text-red-500 font-bold mb-20"></p>
     </div>
   );
 };

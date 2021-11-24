@@ -2,7 +2,7 @@ import "./styles.css";
 
 const TriangleHome = () => {
   return (
-    <div className="MainContainer mb-20 mt-32">
+    <div className="TriangleHomeImage MainContainer mb-20 mt-32">
       <h2 className="text-blue-400 text-4xl">Wähle ein Dreieck aus</h2>
       <div className="MainContainer mt-32 p-10">
         <a href="/gleichschenklig" className="MainContainer">
