@@ -41,9 +41,7 @@ const Triangle = () => {
         />
         {props?.txt || null}
       </label>
-    );
-
-    
+    );    
   };
 
   return (
