@@ -24,7 +24,7 @@ const Menu = () => {
             onKeyEvent={() => handleClick()}
           />
           <div
-            className="h-10 w-10 cursor-pointer fixed top-2 right-3"
+            className="h-10 w-10 cursor-pointer fixed top-10 right-9"
             onClick={(event) => handleClick(event)}
           >
             <div className="bar rounded-sm bg-black h-0.5 transition duration-500 cursor-pointer fixed top-14 right-10 w-8"></div>
@@ -35,16 +35,17 @@ const Menu = () => {
         <img src={Logo} alt="Logo" className="h-40" />
       </div>
       <div
-        className={classNames({
-          "main-container": true,
+        className={classNames("main-container", {
           "overflow-hidden filter blur-sm": active,
         })}
       >
         <div
-          className={classNames({
-            "main relative origin-left z-10 transition duration-500": true,
-            "cursor-pointer ": active,
-          })}
+          className={classNames(
+            "main relative origin-left z-10 transition duration-500",
+            {
+              "cursor-pointer ": active,
+            }
+          )}
           onClick={() => {
             if (active) {
               handleClick();
@@ -53,8 +54,7 @@ const Menu = () => {
         >
           <header className="relative w-full min-h-screen">
             <div
-              className={classNames({
-                "absolute w-full h-auto bg-white": true,
+              className={classNames("absolute w-full h-auto bg-white", {
                 "rounded-xl": active,
               })}
             >
@@ -68,10 +68,12 @@ const Menu = () => {
         </div>
       </div>
       <div
-        className={classNames({
-          "fixed bottom-5 w-full z-20 flex items-center justify-center": true,
-          hidden: !active,
-        })}
+        className={classNames(
+          "fixed bottom-5 w-full z-20 flex items-center justify-center",
+          {
+            hidden: !active,
+          }
+        )}
       >
         <MenuLinks />
       </div>
