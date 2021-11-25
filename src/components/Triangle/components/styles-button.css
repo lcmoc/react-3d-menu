@@ -1,0 +1,11 @@
+.SubmitButton:hover {
+    transition: 200ms ease-in;
+    box-shadow: 15px 17px 8px -10px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 15px 17px 8px -10px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 15px 17px 8px -10px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}  
+
+.SubmitButton:active {
+    box-shadow: none;
+}
