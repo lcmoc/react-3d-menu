@@ -1,0 +1,14 @@
+.triangle {
+    transform: rotate(45deg) translate(100px, 20px);
+}
+
+.triangle2 {
+    transform: rotate(-45deg) translate(136px, 10px);
+    margin-left: 102px;
+}
+
+.triangle3 {
+    transform: translateX(25px) translateY(-106px);
+    width: 248px;
+}
+
