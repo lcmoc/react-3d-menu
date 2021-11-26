@@ -52,3 +52,8 @@
   transition: ease-out 1s;
   transform: scale(0.65, 0.9);
 }
+
+.ToggleText {
+  top: 171px;
+  left: 127px;
+}
