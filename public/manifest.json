@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Geo-Rechner",
+  "name": "Rechner für Geometrische Formeln",
   "icons": [
     {
       "src": "favicon.ico",
