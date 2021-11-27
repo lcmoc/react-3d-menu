@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import DescriptionTriangle from "./components/DescriptionTriangle/index";
-import DreicekIMG from "../../assets/DreieckIMG.jpeg";
 import EquilateralTriangle from "./components/EquilateralTriangle/index";
 import Fläche from "./components/Fläche/index";
 import IsoscelesTriangle from "./components/IsoscelesTriangle";
@@ -54,8 +53,7 @@ const Triangle = () => {
           <h3 className="text-gray-500 font-bold text-3xl">
             Was ist ein Dreieck?
           </h3>
-          <div className="flex flex-row items-center justify-between">
-            <img src={DreicekIMG} alt="Dreieck" className="h-64" />
+          <div className="flex flex-row items-center">
             <DescriptionTriangle />
           </div>
           <p className="text-gray-500 font-bold text-2xl">
