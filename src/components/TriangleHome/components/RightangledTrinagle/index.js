@@ -14,6 +14,8 @@ import {
   wholeRadius,
 } from "../../constants";
 
+import Navigation from '../Navigation'
+
 const RightAngledTriangle = () => {
   const [sideC, setSideC] = useState();
   const [sideB, setSideB] = useState();
@@ -188,6 +190,7 @@ const RightAngledTriangle = () => {
         </p>
       </div>
       <p className="text-lg text-red-500 font-bold mb-24">{error}</p>
+      <Navigation linkPrev="gleichseitigesdreieck"/>
     </div>
   );
 };

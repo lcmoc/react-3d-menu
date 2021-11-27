@@ -16,6 +16,7 @@ import {
   wholeRadius,
 } from "../../constants";
 
+import Navigation from "../Navigation";
 import classNames from "classnames";
 
 const IsoscelesTriangle = () => {
@@ -227,6 +228,7 @@ const IsoscelesTriangle = () => {
         </p>
       </div>
       <p className="text-lg text-red-500 font-bold mb-20"></p>
+      <Navigation linkNext="gleichseitigesdreieck"/>
     </div>
   );
 };
