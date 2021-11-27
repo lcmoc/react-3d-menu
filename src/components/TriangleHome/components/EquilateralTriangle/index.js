@@ -28,7 +28,7 @@ const EquilateralTriangle = () => {
       setSideC(value);
       setSideB(value);
       setSideA(value);
-    }
+    };
 
     if (name && [nameSideA, nameSideB, nameSideC].includes(name)) {
       setSides(value);
@@ -60,6 +60,9 @@ const EquilateralTriangle = () => {
 
   return (
     <div className="MainContainer">
+      <h2 className="text-blue-400 text-4xl mt-40">
+        Gleichseitiges Dreieck
+      </h2>
       <div className="EquTriangle mt-40 mb-28">
         <input
           type="number"

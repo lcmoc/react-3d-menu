@@ -84,7 +84,7 @@ const RightAngledTriangle = () => {
     } else if (name === nameRightAngledRadiusThree) {
       setRadiusThree(value);
       setError("");
-      if ((isToSmall) && (isToBig)) {
+      if (isToSmall && isToBig) {
         setError("");
         setRadiusOne(wholeRadius - rightAngledRadius - value);
       } else if (!isToSmall) {
@@ -97,6 +97,7 @@ const RightAngledTriangle = () => {
 
   return (
     <div className="flex items-center justify-center flex-col">
+      <h2 className="text-blue-400 text-4xl mt-40">Rechtwinkliges Dreieck</h2>
       <div className="border-black relative mt-20">
         <div className="Triangle mt-40 mb-24"></div>
         <input
