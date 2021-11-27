@@ -3,6 +3,7 @@ import "../styles-button.css";
 import { RightAngledTriangleTitle, RightAngledTriangleType } from "../constans";
 
 import FormulaFilter from "../FormulaFilter";
+import Pythagoras from "../Pythagoras";
 import React from "react";
 import RechtwinkligesDreieck from "../../../../assets/RechtwinkligesDreieck.svg";
 
@@ -21,13 +22,13 @@ const RightAngledTriangle = () => {
         />
         <ul className="text-gray-500 text-lg mb-7 flex flex-col justify-center">
           <li>Das Dreieck besitzt immer einen Rechten Winkel</li>
-          <li>enim ipsum in laudantium voluptates tempora voluptate neque.</li>
         </ul>
       </div>
       <FormulaFilter
         title={RightAngledTriangleTitle}
         triangleType={RightAngledTriangleType}
       />
+      <Pythagoras />
     </div>
   );
 };
