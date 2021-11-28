@@ -3,6 +3,7 @@ import "./styles.css";
 import React, { useState } from "react";
 
 import Content from "../Content";
+import DescriptionSwitch from "./components/DescriptionSwitch";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import Logo from "../../assets/Logo.png";
 import MenuLinks from "./components/MenuLinks";
@@ -15,8 +16,10 @@ const Menu = () => {
     active ? setActive(false) : setActive(true);
   };
 
+  const [value, setValue] = useState(false);
+
   return (
-    <div className={active ? "ContentContainer active" : "ContentContainer"} >
+    <div className={active ? "ContentContainer active" : "ContentContainer"}>
       <div className="w-full z-20 h-12 left-0 top-0 fixed">
         <div className="w-full flex justify-between items-center text-white">
           <KeyboardEventHandler
@@ -24,10 +27,26 @@ const Menu = () => {
             onKeyEvent={() => handleClick()}
           />
           <div
-            className="h-10 w-10 cursor-pointer fixed top-10 right-9"
+            className="h-10 w-10 cursor-pointer fixed top-16 right-9"
             onClick={(event) => handleClick(event)}
           >
-            <div className="bar rounded-sm bg-black h-0.5 transition duration-500 cursor-pointer fixed top-14 right-10 w-8"></div>
+            <div className="bar rounded-sm bg-black h-0.5 transition duration-500 cursor-pointer fixed top-20 right-10 w-8"></div>
+            <div
+              className={classNames("fixed top-36 left-14 bg-blue-900 rounded-3xl bg-opacity-80 w-52 h-20", {
+                hidden: !active,
+              })}
+            >
+              <DescriptionSwitch
+                isOn={value}
+                onColor="#EF476F"
+                handleToggle={() => setValue(!value)}
+              />
+            </div>
+            <p className={classNames("ToggleText text-lg font-bold text-white fixed", {
+              "hidden": ! active
+            })}>
+                Beschreibung
+            </p>
           </div>
         </div>
       </div>
@@ -58,7 +77,7 @@ const Menu = () => {
                 "rounded-xl": active,
               })}
             >
-              <Content />
+              <Content isOn={value}/>
             </div>
           </header>
         </div>

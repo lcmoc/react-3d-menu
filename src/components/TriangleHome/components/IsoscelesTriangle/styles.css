@@ -1,0 +1,81 @@
+.IsoTriangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 150px 400px 150px;
+  border-color: transparent transparent #007bff transparent;
+  position: relative;
+}
+
+.IsoRadiusOne {
+  position: absolute;
+  top: 60px;
+  left: -20px;
+  background-color: #007bff;
+  z-index: 2;
+}
+
+.IsoRadiusTwo {
+  position: absolute;
+  top: 367px;
+  left: -140px;
+}
+
+.IsoRadiusThree {
+  position: absolute;
+  top: 367px;
+  left: 100px;
+}
+
+.IsoSideC {
+  position: absolute;
+  top: 430px;
+  left: -43px;
+}
+
+.IsoSideB {
+  position: absolute;
+  top: 200px;
+  left: -220px;
+}
+
+.IsoSideA {
+  position: absolute;
+  top: 200px;
+  left: 125px;
+}
+
+.IsoHight {
+  position: absolute;
+  top: 200px;
+  left: -49px;
+  background-color: #007bff;
+  z-index: 2;
+}
+
+.IsoVerticalLine {
+  position: absolute;
+  left: -1.7px;
+  border-left: 3px dashed rgb(0, 174, 255);
+  height: 390px;
+  z-index: 1;
+  top: 6px;
+}
+
+.IsoCornerA {
+  position: absolute;
+  top: 410px;
+  left: -180px;
+}
+
+.IsoCornerB {
+  position: absolute;
+  top: 410px;
+  left: 170px;
+}
+
+.IsoCornerC {
+  position: absolute;
+  left: -8px;
+  top: -45px;
+}
