@@ -1,6 +1,6 @@
 /* Position and sizing of burger button */
 .settings-menu .bm-burger-button {
-  position: relative;
+  position: fixed;
   width: 36px;
   height: 30px;
   left: 36px;
@@ -8,7 +8,7 @@
 }
 
 .values-menu .bm-burger-button {
-  position: relative;
+  position: fixed;
   width: 36px;
   height: 30px;
   right: 36px;
@@ -23,12 +23,13 @@
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: rgb(206, 43, 43);
+  background: rgb(201, 38, 38);
+  display: none;
 }
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: rgb(255, 255, 255);
+  background: rgb(20, 239, 31);
 }
 
 /* Color/shape of close button cross */
@@ -55,10 +56,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: rgb(161, 161, 161);
-}
-
-/* Wrapper for item list */
-.bm-item-list {
 }
 
 /* Individual item */
@@ -98,7 +95,7 @@ div.underlined {
 
 /* Labels */
 label {
-  color: rgb(173, 103, 103);
+  color: rgba(107, 114, 128);
 }
 
 label.centered {
@@ -165,4 +162,18 @@ button.wide-button {
 button.wide-button:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(40, 44, 52);
+}
+.btn-pri {
+  color: #fff;
+  background-color: rgba(96, 165, 250);
+  border-color: rgba(96, 165, 250);
+}
+.btn-pri:hover,
+.btn-pri:focus,
+.btn-pri:active,
+.btn-pri.active,
+.open > .dropdown-toggle.btn-pri {
+  color: #fff;
+  background-color: gray;
+  border-color: gray;
 }

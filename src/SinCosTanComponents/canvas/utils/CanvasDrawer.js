@@ -3,8 +3,7 @@ import Circle from './Circle.js';
 import { degToRad, radToDeg } from '../../utils/angleCalc.js';
 
 const white = 'rgb(255, 255, 255)';
-const green = 'rgb(36, 173, 48)';
-const brightGreen = 'rgb(25, 207, 41)';
+const blue = 'rgba(96, 165, 250)';
 const black = 'rgb(40, 44, 52)';
 const grey = 'rgb(135, 135, 135)';
 
@@ -86,7 +85,7 @@ export default class CanvasDrawer {
     this.ctx.lineWidth = 2;
 
     // Draw angle line
-    this.ctx.strokeStyle = green;
+    this.ctx.strokeStyle = blue;
     this.ctx.beginPath();
     this.ctx.moveTo(circleCentreX, circleCentreY);
     this.ctx.lineTo(lineEndX, lineEndY);
@@ -110,18 +109,6 @@ export default class CanvasDrawer {
     // Draw sec line
     const secLineLen = (1 / Math.cos(radians)) * radius;
     const secLineEndX = circleCentreX + secLineLen;
-    if (this.trigVisible.sec) {
-      this.ctx.moveTo(circleCentreX, circleCentreY);
-      this.ctx.lineTo(secLineEndX, circleCentreY);
-    }
-
-    // Draw cosec line
-    const cosecLineLen = (1 / Math.sin(radians)) * radius;
-    const cosecLineEndY = circleCentreY - cosecLineLen;
-    if (this.trigVisible.csc) {
-      this.ctx.moveTo(circleCentreX, circleCentreY);
-      this.ctx.lineTo(circleCentreX, cosecLineEndY);
-    }
 
     // Draw tan line
     if (this.trigVisible.tan) {
@@ -129,30 +116,24 @@ export default class CanvasDrawer {
       this.ctx.lineTo(secLineEndX, circleCentreY);
     }
 
-    // Draw cotan line
-    if (this.trigVisible.cot) {
-      this.ctx.moveTo(lineEndX, lineEndY);
-      this.ctx.lineTo(circleCentreX, cosecLineEndY);
-    }
-
     this.ctx.stroke();
 
     this.ctx.font = '20px Consolas';
 
     // Write angle value
-    if (this.angleUnit != 'none') {
+    if (this.angleUnit !== 'none') {
       this.ctx.fillStyle = white;
       this.textAlignOutwards(radians);
-      if (this.angleUnit == 'degrees') {
+      if (this.angleUnit === 'degrees') {
         this.ctx.fillText(
           radToDeg(radians).toFixed(2) + '°',
           lineEndX,
           lineEndY
         );
       }
-      if (this.angleUnit == 'radians') {
+      if (this.angleUnit === 'radians') {
         console.log(radians);
-        if (radians % 1 != 0) {
+        if (radians % 1 !== 0) {
           this.ctx.fillText(radians.toFixed(5), lineEndX, lineEndY);
         } else {
           this.ctx.fillText(radians, lineEndX, lineEndY);
@@ -160,7 +141,7 @@ export default class CanvasDrawer {
       }
     }
 
-    this.ctx.fillStyle = green;
+    this.ctx.fillStyle = blue;
 
     // Write cos values
     if (this.trigVisible.cos) {
@@ -182,26 +163,6 @@ export default class CanvasDrawer {
       );
     }
 
-    // Write sec values
-    if (this.trigVisible.sec) {
-      this.textAlignTopBottomInwards(radians);
-      this.ctx.fillText(
-        Math.abs((1 / Math.cos(radians)).toFixed(2)),
-        secLineEndX + (circleCentreX - secLineEndX) / 2,
-        circleCentreY
-      );
-    }
-
-    // Write cosec values
-    if (this.trigVisible.csc) {
-      this.textAlignRightLeftInwards(radians);
-      this.ctx.fillText(
-        Math.abs((1 / Math.sin(radians)).toFixed(2)),
-        circleCentreX,
-        cosecLineEndY + (circleCentreY - cosecLineEndY) / 2
-      );
-    }
-
     // Write tan values
     if (this.trigVisible.tan) {
       this.textAlignOutwards(radians);
@@ -211,18 +172,6 @@ export default class CanvasDrawer {
         Math.abs(Math.tan(radians).toFixed(2)),
         lineEndX + lineEndXToSecLineEndX / 2,
         circleCentreY - lineEndYToSecLineEndY / 2
-      );
-    }
-
-    // Write cotan values
-    if (this.trigVisible.cot) {
-      this.textAlignOutwards(radians);
-      const lineEndXToCosecLineEndX = lineEndX - circleCentreX;
-      const lineEndYToCosecLineEndY = lineEndY - cosecLineEndY;
-      this.ctx.fillText(
-        Math.abs((1 / Math.tan(radians)).toFixed(2)),
-        lineEndX - lineEndXToCosecLineEndX / 2,
-        lineEndY - lineEndYToCosecLineEndY / 2
       );
     }
   }
@@ -468,14 +417,7 @@ export default class CanvasDrawer {
 
       this.ctx.textAlign = 'start';
       this.ctx.textBaseline = 'bottom';
-      let functionSigns = [
-        'csc +',
-        'sec +',
-        'cot +',
-        'tan +',
-        'cos +',
-        'sin +',
-      ];
+      let functionSigns = ['tan +', 'cos +', 'sin +'];
       for (let i = 0; i < functionSigns.length; i++) {
         this.ctx.fillText(
           functionSigns[i],
@@ -485,7 +427,7 @@ export default class CanvasDrawer {
       }
 
       this.ctx.textAlign = 'end';
-      functionSigns = ['csc +', 'sec -', 'cot -', 'tan -', 'cos -', 'sin +'];
+      functionSigns = ['tan -', 'cos -', 'sin +'];
       for (let i = 0; i < functionSigns.length; i++) {
         this.ctx.fillText(
           functionSigns[i],
@@ -495,7 +437,7 @@ export default class CanvasDrawer {
       }
 
       this.ctx.textBaseline = 'top';
-      functionSigns = ['csc -', 'sec -', 'cot +', 'tan +', 'cos -', 'sin -'];
+      functionSigns = ['tan +', 'cos -', 'sin -'];
       for (let i = 0; i < functionSigns.length; i++) {
         this.ctx.fillText(
           functionSigns[i],
@@ -505,7 +447,7 @@ export default class CanvasDrawer {
       }
 
       this.ctx.textAlign = 'start';
-      functionSigns = ['csc -', 'sec +', 'cot -', 'tan -', 'cos +', 'sin -'];
+      functionSigns = ['tan -', 'cos +', 'sin -'];
       for (let i = 0; i < functionSigns.length; i++) {
         this.ctx.fillText(
           functionSigns[i],
@@ -551,9 +493,6 @@ export default class CanvasDrawer {
       let diffY = mouseY - circleCentreY;
       let radians = -Math.atan2(diffY, diffX);
 
-      // The atan2 function returns negative radian values below 0, we want to show
-      // the degrees in the range of [0, 2*Math.PI] so if the degree is negative then
-      // just extract it from 2*Math.PI
       if (radians < 0) {
         radians = Math.PI * 2 + radians;
       }

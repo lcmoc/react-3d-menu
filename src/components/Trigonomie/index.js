@@ -1,9 +1,9 @@
 import SinCosTanComponents from '../../SinCosTanComponents';
 
-const Sinus = () => {
+const Trigonomie = () => {
   return (
     <div className="flex flex-col items-center justify-center mt-10">
-      <h2 className="text-blue-400 text-4xl">Sinus</h2>
+      <h2 className="text-blue-400 text-4xl">Trigonomie Berechnungen</h2>
       <br />
       <br />
       <SinCosTanComponents />
@@ -11,4 +11,4 @@ const Sinus = () => {
   );
 };
 
-export default Sinus;
+export default Trigonomie;

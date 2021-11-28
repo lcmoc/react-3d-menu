@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Canvas from './canvas/Canvas.js';
 import SettingsMenu from './settings_menu/SettingsMenu.js';
 import ValuesMenu from './values_menu/ValuesMenu.js';
@@ -10,14 +10,10 @@ function SinCosTanComponents() {
   const [radianAngle, setRadianAngle] = useState(null);
   const [trigValues, setTrigValues] = useState({});
   const [angleSelect, setAngleSelect] = useState(true);
-  const [angleUnit, setAngleUnit] = useState('degrees');
   const [trigVisible, setTrigVisible] = useState({
     cos: true,
     sin: true,
     tan: true,
-    cot: true,
-    sec: true,
-    csc: true,
   });
   const [circleDetails, setCircleDetails] = useState({
     axes: true,
@@ -29,18 +25,11 @@ function SinCosTanComponents() {
   });
   const [updateCount, setUpdateCount] = useState(0);
 
-  useEffect(() => {
-    document.title = 'Geo Rechner';
-  }, []);
-
   const updateTrigValues = (radians) => {
     setTrigValues({
       cos: Math.cos(radians).toFixed(5),
       sin: Math.sin(radians).toFixed(5),
       tan: Math.tan(radians).toFixed(5),
-      cot: (1 / Math.tan(radians)).toFixed(5),
-      sec: (1 / Math.cos(radians)).toFixed(5),
-      csc: (1 / Math.sin(radians)).toFixed(5),
     });
   };
 
@@ -75,21 +64,6 @@ function SinCosTanComponents() {
     setUpdateCount(updateCount + 1);
   };
 
-  const handleAngleUnitChange = (event) => {
-    switch (event.target.value) {
-      case 'degrees':
-        setAngleUnit('degrees');
-        break;
-      case 'radians':
-        setAngleUnit('radians');
-        break;
-      case 'none':
-        setAngleUnit('none');
-        break;
-    }
-    setUpdateCount(updateCount + 1);
-  };
-
   const handleTrigSelectionChange = (event) => {
     const newTrigVisible = trigVisible;
     switch (event.target.id) {
@@ -102,43 +76,11 @@ function SinCosTanComponents() {
       case 'tan-checkbox':
         newTrigVisible.tan = event.target.checked;
         break;
-      case 'cot-checkbox':
-        newTrigVisible.cot = event.target.checked;
-        break;
-      case 'sec-checkbox':
-        newTrigVisible.sec = event.target.checked;
-        break;
-      case 'csc-checkbox':
-        newTrigVisible.csc = event.target.checked;
+      default:
         break;
     }
-    setTrigVisible(newTrigVisible);
-    setUpdateCount(updateCount + 1);
-  };
 
-  const handleCircleDetailChange = (event) => {
-    const newCircleDetails = circleDetails;
-    switch (event.target.id) {
-      case 'axis-checkbox':
-        newCircleDetails.axes = event.target.checked;
-        break;
-      case 'degree-checkbox':
-        newCircleDetails.degrees = event.target.checked;
-        break;
-      case 'radian-checkbox':
-        newCircleDetails.radians = event.target.checked;
-        break;
-      case 'pi-checkbox':
-        newCircleDetails.pi = event.target.checked;
-        break;
-      case 'quadrant-checkbox':
-        newCircleDetails.quadrants = event.target.checked;
-        break;
-      case 'sign-checkbox':
-        newCircleDetails.signs = event.target.checked;
-        break;
-    }
-    setCircleDetails(newCircleDetails);
+    setTrigVisible(newTrigVisible);
     setUpdateCount(updateCount + 1);
   };
 
@@ -152,18 +94,16 @@ function SinCosTanComponents() {
           handleDegreeAngleChange={handleDegreeAngleChange}
           handleRadianAngleChange={handleRadianAngleChange}
           handleAngleSelectionChange={handleAngleSelectionChange}
-          handleAngleUnitChange={handleAngleUnitChange}
           handleTrigSelectionChange={handleTrigSelectionChange}
-          handleCircleDetailChange={handleCircleDetailChange}
         />
       </div>
       <div className="values-menu">
         <ValuesMenu radianAngle={radianAngle} trigValues={trigValues} />
       </div>
+
       <Canvas
         radianAngle={radianAngle}
         angleSelect={angleSelect}
-        angleUnit={angleUnit}
         trigVisible={trigVisible}
         circleDetails={circleDetails}
         handleGraphRadianChange={handleGraphRadianChange}
