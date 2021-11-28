@@ -3,6 +3,7 @@ import "../styles-button.css";
 import React, { useState } from "react";
 
 import classNames from "classnames";
+import { powerOfTwo } from "../../../TriangleHome/constants";
 
 const Pythagoras = () => {
   const [sideA, setSideA] = useState();
@@ -12,25 +13,33 @@ const Pythagoras = () => {
   const [result, setResult] = useState();
   const [error, setError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [currentCalculation, setCurrentCalculation] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
     if (sideA && sideB) {
       setError(false);
+      setCurrentCalculation("c");
       round
-        ? setResult(Math.round((sideA * sideB) / 2))
-        : setResult((sideA * sideB) / 2);
+        ? setResult(
+            Math.round(Math.sqrt(powerOfTwo(sideA) + powerOfTwo(sideB)))
+          )
+        : setResult(Math.sqrt(powerOfTwo(sideA) + powerOfTwo(sideB)));
     } else if (sideA && sideC) {
       round
-        ? setResult(Math.round((sideA * sideC) / 2))
+        ? setResult(
+            Math.round(Math.sqrt(powerOfTwo(sideA) + powerOfTwo(sideB)))
+          )
         : setResult((sideA * sideC) / 2);
       setError(false);
+      setCurrentCalculation("b");
     } else if (sideB && sideC) {
       round
         ? setResult(Math.round((sideB * sideC) / 2))
         : setResult((sideB * sideC) / 2);
       setError(false);
+      setCurrentCalculation("a");
     } else {
       setError(true);
     }
@@ -45,40 +54,52 @@ const Pythagoras = () => {
     setSubmitted(false);
   };
 
-  const MainFormula = () => (
+  const SideCFormula = () => (
     <p className="text-gray-500 font-bold text-xl mb-4">
-      Seite c = &#8730;<span className="text-red-600">a&sup2;</span> *
-      <span className="text-green-600">b&sup2;</span>
+      Seite c = &#8730;<span className="text-red-600">a&sup2;</span> +
+      <span className="text-green-600"> b&sup2;</span>
     </p>
   );
 
-  const SecondFormula = () => (
+  const SideAFormula = () => (
     <p className="text-gray-500 font-bold text-xl mb-4">
-      Fläche A = <span className="text-red-600">{sideA ? "a" : "b"}</span> *{" "}
-      <span className="text-green-600">{sideB && !sideC ? "b" : "c"}</span> ∻ 2
+      Seite a = &#8730;<span className="text-red-600">c&sup2;</span> -
+      <span className="text-green-600"> b&sup2;</span>
+    </p>
+  );
+
+  const SideBFormula = () => (
+    <p className="text-gray-500 font-bold text-xl mb-4">
+      Seite a = &#8730;<span className="text-red-600">a&sup2;</span> -
+      <span className="text-green-600"> c&sup2;</span>
+    </p>
+  );
+
+  const CalculationResultJsx = () => (
+    <p className="text-gray-500 font-bold text-xl mb-4">
+      Seite {currentCalculation} = &#8730;<span className="text-red-600">{sideA ? sideA : sideB}&sup2;</span> -
+      <span className="text-green-600"> {sideB && !sideC  ? sideB : sideC}&sup2;</span>
     </p>
   );
 
   const Result = () => (
     <p className="font-bold text-xl text-gray-500">
-      Fläche A = <span className="text-purple-400 ">{result}</span>
+      Seite {currentCalculation} ={" "}
+      <span className="text-purple-400">{Math.round(result)}</span>
     </p>
   );
 
-  const FormulaAB = () => (
-    <div className="flex flex-col items-start justify-center">
-      <MainFormula />
-      <p className="text-gray-500 font-bold text-xl mb-6">
-        Fläche A = <span className="text-red-600">{sideA ? sideA : sideB}</span>{" "}
-        *
-        <span className="text-green-600">
-          {sideB && !sideC ? sideB : sideC}
-        </span>
-        ∻ 2
-      </p>
-      <Result />
-    </div>
-  );
+  const CurrentFormula = () => {
+    return (
+      <div className="flex flex-col items-start justify-center">
+        {currentCalculation === "c" ? <SideCFormula /> : null}
+        {currentCalculation === "b" ? <SideAFormula /> : null}
+        {currentCalculation === "a" ? <SideBFormula /> : null}
+        <CalculationResultJsx />
+        <Result />
+      </div>
+    );
+  };
 
   return (
     <div className="flex items-center justify-center w-full mb-20 mt-12 flex-col">
@@ -182,11 +203,13 @@ const Pythagoras = () => {
             Sobald man 2 Seiten hat kann man mit der Formeln unten die Seite
             welche noch fehlt berechnen
           </p>
-          <MainFormula />
+          <SideCFormula />
+          <SideAFormula />
+          <SideBFormula />
         </div>
         <div className="w-96 border-4 border-blue-500 rounded p-5  ml-36">
           <h3 className="text-2xl font-bold text-gray-500 mb-4">Lösung</h3>
-          {result ? <FormulaAB /> : null}
+          {result ? <CurrentFormula /> : null}
         </div>
       </div>
     </div>

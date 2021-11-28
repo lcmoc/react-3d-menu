@@ -13,7 +13,7 @@ const Content = ({isOn}) => {
     <>
       <Router>
         <Route exact path="/" component={Home} />
-        <Route path="/dreieck" component={isOn ? Triangle : TriangleHome} />
+        <Route path="/dreieck" component={true ? Triangle : TriangleHome} />
         <Route path="/sinus" component={Sinus} />
         <Route path="/gleichseitigesdreieck" component={EquilateralTriangle} />
         <Route path="/rechtwinklig" component={RightAngledTriangle} />
