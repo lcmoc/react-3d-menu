@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "../styles-button.css";
-import EreaJpeg from "../../../../assets/Flächenihalt.jpeg";
+import React, { useState } from 'react';
+import '../styles-button.css';
+import EreaJpeg from '../../../../assets/Flächenihalt.jpeg';
 
-const Fläche = ({title, triangleType}) => {
+const Fläche = ({ title, triangleType }) => {
   const [high, setHigh] = useState();
   const [sideG, setSideG] = useState();
   const [round, setRound] = useState();
@@ -34,10 +34,10 @@ const Fläche = ({title, triangleType}) => {
 
   const MainFormula = () => (
     <p className="text-gray-500 font-bold text-xl mb-6">
-      Fläche 
-      <span className="text-purple-500"> A</span> = ½ ·{" "}
-      <span className="text-red-500">g</span> ·{" "}
-      <span className="text-green-500">h</span>{" "}
+      Fläche
+      <span className="text-purple-500"> A</span> = ½ ·{' '}
+      <span className="text-red-500">g</span> ·{' '}
+      <span className="text-green-500">h</span>{' '}
     </p>
   );
 
@@ -59,7 +59,7 @@ const Fläche = ({title, triangleType}) => {
 
   const Result = () => (
     <p className="font-bold text-xl text-gray-500">
-      Fläche <span className="text-purple-500">A</span> ={" "}
+      Fläche <span className="text-purple-500">A</span> ={' '}
       <span className="text-purple-400 ">{result}</span>
     </p>
   );
@@ -78,8 +78,12 @@ const Fläche = ({title, triangleType}) => {
 
   return (
     <div className="flex items-center justify-center w-full mb-20 flex-col mt-24">
-      <h2 className="text-blue-600 text-3xl mb-7 mt-4">{title ? `Fläche ${title} berechnen`: "Fläche berechnen"}</h2>
-      <p className="text-lg text-gray-500 font-bold mb-2">Gib die 2 Längen an, um die Fläche zu berechnen</p>
+      <h2 className="text-blue-600 text-3xl mb-7 mt-4">
+        {title ? `Fläche ${title} berechnen` : 'Fläche berechnen'}
+      </h2>
+      <p className="text-lg text-gray-500 font-bold mb-2">
+        Gib die 2 Längen an, um die Fläche zu berechnen
+      </p>
       <form className="flex items-start justify-start flex-col shadow-2xl bg-white border border-black rounded">
         <div className="w-full p-10">
           <label htmlFor="g" className="text-lg text-gray-500 font-bold">
@@ -128,9 +132,10 @@ const Fläche = ({title, triangleType}) => {
           <div className="flex items-center justify-around mt-10">
             <p className="text-gray-500 font-bold">
               Die Fläche beträgt:
-              {submitted && round ? <span className="text-lg"> ⋍</span> : " "}
+              {submitted && round ? <span className="text-lg"> ⋍</span> : ' '}
               <span className="text-blue-800">
-                {submitted && result ? result + "cm" : null}
+                {submitted && result ? result + 'cm' : null}
+                &sup2;
               </span>
             </p>
             <button
@@ -143,7 +148,7 @@ const Fläche = ({title, triangleType}) => {
           <div className="flex items-center justify-center mt-16">
             <p className="text-red-500 font-bold">
               {error
-                ? "Es müssen 2 Längen angegeben werden um die Fläche berechnen zu können."
+                ? 'Es müssen 2 Längen angegeben werden um die Fläche berechnen zu können.'
                 : null}
             </p>
           </div>

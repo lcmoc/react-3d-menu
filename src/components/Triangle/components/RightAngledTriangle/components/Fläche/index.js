@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import classNames from "classnames";
-import "../../../styles-button.css";
-import RechtwinkligesDreieck from "../../../../../../assets/RechtwinkligesDreieck.jpeg";
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import '../../../styles-button.css';
+import RechtwinkligesDreieck from '../../../../../../assets/RechtwinkligesDreieck.jpeg';
 
 const RightangledTriangleArea = () => {
   const [sideA, setSideA] = useState();
@@ -46,8 +46,8 @@ const RightangledTriangleArea = () => {
 
   const MainFormula = () => (
     <p className="text-gray-500 font-bold text-xl mb-4">
-      Fläche A = <span className="text-red-600">{sideA ? "a" : "b"}</span> *{" "}
-      <span className="text-green-600">{sideB && !sideC  ? "b" : "c"}</span> ∻ 2
+      Fläche A = <span className="text-red-600">{sideA ? 'a' : 'b'}</span> *{' '}
+      <span className="text-green-600">{sideB && !sideC ? 'b' : 'c'}</span> ∻ 2
     </p>
   );
 
@@ -61,8 +61,12 @@ const RightangledTriangleArea = () => {
     <div className="flex flex-col items-start justify-center">
       <MainFormula />
       <p className="text-gray-500 font-bold text-xl mb-6">
-        Fläche A = <span className="text-red-600">{sideA ? sideA : sideB}</span> *{" "}
-        <span className="text-green-600">{sideB && !sideC  ? sideB : sideC}</span> ∻ 2
+        Fläche A = <span className="text-red-600">{sideA ? sideA : sideB}</span>{' '}
+        *{' '}
+        <span className="text-green-600">
+          {sideB && !sideC ? sideB : sideC}
+        </span>{' '}
+        ∻ 2
       </p>
       <Result />
     </div>
@@ -73,7 +77,9 @@ const RightangledTriangleArea = () => {
       <h2 className="text-blue-600 text-3xl mb-7">
         Flächeninhalt rechtwinkliges Dreieck
       </h2>
-      <p className="text-lg text-gray-500 font-bold mb-2">Gib 2 Seiten an, um die Fläche zu berechnen</p>
+      <p className="text-lg text-gray-500 font-bold mb-2">
+        Gib 2 Seiten an, um die Fläche zu berechnen
+      </p>
       <form className="flex items-start justify-start flex-col shadow-2xl bg-white border border-black rounded">
         <div className="w-full p-10">
           <label htmlFor="a" className="text-lg text-gray-500 font-bold">
@@ -83,8 +89,8 @@ const RightangledTriangleArea = () => {
             type="number"
             name="a"
             className={classNames(
-              "bg-gray-100 border border-black w-full rounded h-8 mt-1 mb-3 p-2 focus:ring-2 focus:ring-gray-300 focus:outline-none focus:bg-white focus:border-transparent appearance-none shadow-lg",
-              { "border-none cursor-default shadow-none": sideB && sideC }
+              'bg-gray-100 border border-black w-full rounded h-8 mt-1 mb-3 p-2 focus:ring-2 focus:ring-gray-300 focus:outline-none focus:bg-white focus:border-transparent appearance-none shadow-lg',
+              { 'border-none cursor-default shadow-none': sideB && sideC }
             )}
             value={sideA}
             onChange={(event) => setSideA(event.target.value)}
@@ -98,8 +104,8 @@ const RightangledTriangleArea = () => {
             type="number"
             name="b"
             className={classNames(
-              "bg-gray-100 border border-black w-full rounded h-8 mt-1 mb-3 p-2 focus:ring-2 focus:ring-gray-300 focus:outline-none focus:bg-white focus:border-transparent appearance-none shadow-lg",
-              { "border-none cursor-default shadow-none": sideA && sideC }
+              'bg-gray-100 border border-black w-full rounded h-8 mt-1 mb-3 p-2 focus:ring-2 focus:ring-gray-300 focus:outline-none focus:bg-white focus:border-transparent appearance-none shadow-lg',
+              { 'border-none cursor-default shadow-none': sideA && sideC }
             )}
             value={sideB}
             onChange={(event) => setSideB(event.target.value)}
@@ -112,8 +118,8 @@ const RightangledTriangleArea = () => {
             type="number"
             name="c"
             className={classNames(
-              "bg-gray-100 border border-black w-full rounded h-8 mt-1 mb-3 p-2 focus:ring-2 focus:ring-gray-300 focus:outline-none focus:bg-white focus:border-transparent appearance-none shadow-lg",
-              { "border-none cursor-default shadow-none": sideB && sideA }
+              'bg-gray-100 border border-black w-full rounded h-8 mt-1 mb-3 p-2 focus:ring-2 focus:ring-gray-300 focus:outline-none focus:bg-white focus:border-transparent appearance-none shadow-lg',
+              { 'border-none cursor-default shadow-none': sideB && sideA }
             )}
             value={sideC}
             onChange={(event) => setSideC(event.target.value)}
@@ -145,9 +151,10 @@ const RightangledTriangleArea = () => {
           <div className="flex items-center justify-around mt-10">
             <p className="text-gray-500 font-bold">
               Die Fläche beträgt:
-              {submitted && round ? <span className="text-lg"> ⋍</span> : " "}
+              {submitted && round ? <span className="text-lg"> ⋍</span> : ' '}
               <span className="text-blue-800">
-                {submitted && result ? result + "cm" : null}
+                {submitted && result ? result + 'cm' : null}
+                &sup2;
               </span>
             </p>
             <button
@@ -160,7 +167,7 @@ const RightangledTriangleArea = () => {
           <div className="flex items-center justify-center mt-16">
             <p className="text-red-500 font-bold">
               {error
-                ? "Es müssen 2 Seiten angegeben werden um die Fläche berechnen zu können."
+                ? 'Es müssen 2 Seiten angegeben werden um die Fläche berechnen zu können.'
                 : null}
             </p>
           </div>

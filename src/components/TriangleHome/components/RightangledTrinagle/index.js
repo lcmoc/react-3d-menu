@@ -1,9 +1,8 @@
-import "./styles.css";
+import './styles.css';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   nameArea,
-  nameHight,
   nameRightAngledRadiusOne,
   nameRightAngledRadiusThree,
   nameScope,
@@ -12,59 +11,49 @@ import {
   nameSideC,
   rightAngledRadius,
   wholeRadius,
-} from "../../constants";
+  round,
+} from '../../constants';
 
 const RightAngledTriangle = () => {
-  const [sideC, setSideC] = useState();
-  const [sideB, setSideB] = useState();
-  const [sideA, setSideA] = useState();
-  const [scope, setScope] = useState(0);
+  const [dimensions, setDimensions] = useState({});
+  const [scope, setScope] = useState();
+  const [area, setArea] = useState();
   const [hight, setHight] = useState(0);
-  const [area, setArea] = useState(0);
   const [radiusOne, setRadiusOne] = useState(0);
   const [radiusThree, setRadiusThree] = useState(0);
   const [error, setError] = useState();
+  const handleSides = (event) => {
+    const value = event?.target?.value;
+    const name = event?.target?.name;
+    const hight = (value / 2) * Math.sqrt(2);
+    const pythagoras = Math.sqrt(Math.pow(value, 2) + Math.pow(value, 2));
+    const masaha = round((nameSideB * nameSideC) / 2);
 
-  const handleSide = (event) => {
-    const value = event.target.value;
-    const name = event.target.name;
-    const hight = (value / 2) * Math.sqrt(3);
-
-    if (name && [nameSideA, nameSideB, nameSideC].includes(name)) {
-      setSideC(value);
-      setSideB(value);
-      setSideA(value);
-      setScope(value * 3);
+    if ([nameSideB && nameSideC].includes(name)) {
+      setDimensions({ ...dimensions, a: pythagoras });
+      setArea((value * 4.5) / 2);
+      setScope(value * 4);
       setHight(hight);
-      setArea((value * hight) / 2);
-    } else if (name === nameScope) {
-      const sideLength = Math.round(value / 3);
-      const currentHight = hight / 3;
-      setScope(value);
-      setSideC(sideLength);
-      setSideB(sideLength);
-      setSideA(sideLength);
-      setHight(currentHight);
-      setArea((sideLength * currentHight) / 2);
-    } else if (name === nameArea) {
-      const sideLength = Math.sqrt((value * 4) / Math.sqrt(3));
-      setArea(value);
-      setSideC(sideLength);
-      setSideB(sideLength);
-      setSideA(sideLength);
-      setHight((Math.sqrt(3) / 2) * sideLength);
-      setScope(sideLength * 3);
-    } else if (name === nameHight) {
-      const sideLength = (value / Math.sqrt(3)) * 2;
-      setHight(value);
-      setSideC(sideLength);
-      setSideB(sideLength);
-      setSideA(sideLength);
-      setScope(sideLength * 3);
-      setArea((sideLength * value) / 2);
+    } else if ([nameSideC && nameSideB].includes(name)) {
+      setDimensions({ ...dimensions, a: pythagoras });
+      setArea(masaha);
+      setScope(value * 4);
+      setHight(hight);
+      setArea((value * 4.5) / 2);
+      handleSides();
     }
   };
 
+  const handleCalculations = (event) => {
+    const value = event.target.value;
+    const name = event.target.name;
+
+    if ([nameSideB, nameSideC].includes(name)) {
+      handleSides(event);
+    } else if (name === nameArea) {
+    } else if (name === nameScope) {
+    }
+  };
   const handleRadius = (event) => {
     const value = event.target.value;
     const name = event.target.name;
@@ -74,23 +63,23 @@ const RightAngledTriangle = () => {
     if (name === nameRightAngledRadiusOne) {
       setRadiusOne(value);
       if (isToSmall && isToBig) {
-        setError("");
+        setError('');
         setRadiusThree(wholeRadius - rightAngledRadius - value);
       } else if (!isToSmall) {
-        setError("Der obere Radius ist zu klein");
+        setError('Der obere Radius ist zu klein');
       } else if (!isToBig) {
-        setError("Der obere Radius ist zu gross");
+        setError('Der obere Radius ist zu gross');
       }
     } else if (name === nameRightAngledRadiusThree) {
       setRadiusThree(value);
-      setError("");
-      if ((isToSmall) && (isToBig)) {
-        setError("");
+      setError('');
+      if (isToSmall && isToBig) {
+        setError('');
         setRadiusOne(wholeRadius - rightAngledRadius - value);
       } else if (!isToSmall) {
-        setError("Der untere Radius ist zu klein");
+        setError('Der untere Radius ist zu klein');
       } else if (!isToBig) {
-        setError("Der untere Radius ist zu gross");
+        setError('Der untere Radius ist zu gross');
       }
     }
   };
@@ -120,43 +109,45 @@ const RightAngledTriangle = () => {
           value={radiusThree}
           onChange={(event) => handleRadius(event)}
         />
-        <label htmlFor="sideC" className="InputSideC text-center">
+        <label htmlFor={nameSideC} className="InputSideC text-center">
           <input
             type="number"
-            name="sideC"
+            name={nameSideC}
             className="border border-gray-500 bg-transparent focus:border-transparent w-24 text-center rounded"
-            onChange={(event) => handleSide(event)}
-            value={sideC}
+            onChange={(event) => handleCalculations(event)}
+            value={dimensions.c}
           />
           <p className="text-lg text-gray-500 font-bold">Seite c</p>
         </label>
-        <label htmlFor="sideB" className="InputSideB text-center">
+        <label htmlFor={nameSideB} className="InputSideB text-center">
           <input
             type="number"
-            name="sideB"
+            name={nameSideB}
             className="border border-gray-500 bg-transparent focus:border-transparent w-24 text-center rounded appearance-none"
-            onChange={(event) => handleSide(event)}
-            value={sideB}
+            onChange={(event) => handleCalculations(event)}
+            value={dimensions.b}
           />
           <p className="text-lg text-gray-500 font-bold">Seite b</p>
         </label>
-        <label htmlFor="sideA" className="InputSideA text-center">
+        <label htmlFor={nameSideA} className="InputSideA text-center">
           <input
             type="number"
-            name="sideA"
+            name={nameSideA}
             className="border border-gray-500 bg-transparent focus:border-transparent w-24 text-center rounded"
-            onChange={(event) => handleSide(event)}
-            value={sideA}
+            onChange={(event) => handleCalculations(event)}
+            value={dimensions.a}
           />
           <p className="text-lg text-gray-500 font-bold">Seite a</p>
         </label>
         <label htmlFor="hight" className="RightAngledHight text-center">
           <p className="text-lg">Höhe h</p>
+
           <input
             type="number"
             name="hight"
             className="bg-transparent focus:border-transparent w-24 text-center"
-            onChange={(event) => handleSide(event)}
+            onChange={(event) => handleCalculations(event)}
+            $
             value={hight}
           />
         </label>
@@ -169,9 +160,9 @@ const RightAngledTriangle = () => {
           Umfang U =
           <input
             type="number"
-            name="scope"
+            name={nameScope}
             className="bg-transparent focus:border-transparent text-start p-1 w-24 mr-5"
-            onChange={(event) => handleSide(event)}
+            onChange={(event) => handleCalculations(event)}
             value={scope}
           />
         </p>
@@ -181,7 +172,7 @@ const RightAngledTriangle = () => {
             type="number"
             name="area"
             className="bg-transparent focus:border-transparent text-start p-1 w-24"
-            onChange={(event) => handleSide(event)}
+            onChange={(event) => handleCalculations(event)}
             value={area}
           />
         </p>
