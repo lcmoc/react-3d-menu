@@ -8,12 +8,12 @@ import Sinus from "../Sinus/index";
 import Triangle from "../Triangle/index"
 import TriangleHome from "../TriangleHome/index";
 
-const Content = ({isOn}) => {
+const Content = ({ isOn }) => {
   return (
     <>
       <Router>
         <Route exact path="/" component={Home} />
-        <Route path="/dreieck" component={true ? Triangle : TriangleHome} />
+        <Route path="/dreieck" component={isOn ? Triangle : TriangleHome} />
         <Route path="/sinus" component={Sinus} />
         <Route path="/gleichseitigesdreieck" component={EquilateralTriangle} />
         <Route path="/rechtwinklig" component={RightAngledTriangle} />
