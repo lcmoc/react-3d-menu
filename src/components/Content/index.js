@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+
 import EquilateralTriangle from '../TriangleHome/components/EquilateralTriangle';
 import Home from '../Home/index';
 import IsoscelesTriangle from '../TriangleHome/components/IsoscelesTriangle';

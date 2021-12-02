@@ -2,9 +2,10 @@ import '../styles-button.css';
 
 import { RightAngledTriangleTitle, RightAngledTriangleType } from '../constans';
 
-import FormulaFilter from '../FormulaFilter';
-import React from 'react';
-import RechtwinkligesDreieck from '../../../../assets/RechtwinkligesDreieck.svg';
+import FormulaFilter from "../FormulaFilter";
+import Pythagoras from "../Pythagoras";
+import React from "react";
+import RechtwinkligesDreieck from "../../../../assets/RechtwinkligesDreieck.svg";
 
 const RightAngledTriangle = () => {
   return (
@@ -31,6 +32,7 @@ const RightAngledTriangle = () => {
         title={RightAngledTriangleTitle}
         triangleType={RightAngledTriangleType}
       />
+      <Pythagoras />
     </div>
   );
 };

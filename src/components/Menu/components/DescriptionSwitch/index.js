@@ -2,7 +2,7 @@ import "./styles.css";
 
 import React from "react";
 
-const DescriptionSwitch = ({ isOn, handleToggle, onColor, txt }) => {
+const DescriptionSwitch = ({ isOn, handleToggle, onColor }) => {
   return (
     <div className="ml-3 mt-1">
       <input

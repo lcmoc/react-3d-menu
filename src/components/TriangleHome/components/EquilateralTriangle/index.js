@@ -11,6 +11,8 @@ import {
   radiusValue,
 } from "../../constants";
 
+import Navigation from "../Navigation";
+
 const EquilateralTriangle = () => {
   const [sideC, setSideC] = useState();
   const [sideB, setSideB] = useState();
@@ -28,7 +30,7 @@ const EquilateralTriangle = () => {
       setSideC(value);
       setSideB(value);
       setSideA(value);
-    }
+    };
 
     if (name && [nameSideA, nameSideB, nameSideC].includes(name)) {
       setSides(value);
@@ -60,6 +62,9 @@ const EquilateralTriangle = () => {
 
   return (
     <div className="MainContainer">
+      <h2 className="text-blue-400 text-4xl mt-40">
+        Gleichseitiges Dreieck
+      </h2>
       <div className="EquTriangle mt-40 mb-28">
         <input
           type="number"
@@ -124,7 +129,7 @@ const EquilateralTriangle = () => {
         <p className="EquCornerB text-2xl text-gray-500 font-bold">B</p>
         <p className="EquCornerC text-2xl text-gray-500 font-bold">C</p>
       </div>
-      <div className="flex items-center justify-center ml-20 mb-32">
+      <div className="flex items-center justify-center ml-20">
         <p className="text-lg text-gray-500 font-bold">
           Umfang U =
           <input
@@ -146,6 +151,7 @@ const EquilateralTriangle = () => {
           />
         </p>
       </div>
+      <Navigation linkPrev="gleichschenklig" linkNext="rechtwinklig"/>
     </div>
   );
 };

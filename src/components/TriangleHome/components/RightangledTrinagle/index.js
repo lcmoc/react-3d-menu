@@ -1,6 +1,6 @@
-import './styles.css';
+import "./styles.css";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   nameArea,
   nameRightAngledRadiusOne,
@@ -9,51 +9,55 @@ import {
   nameSideA,
   nameSideB,
   nameSideC,
+  powerOfTwo,
   rightAngledRadius,
-  wholeRadius,
   round,
-} from '../../constants';
+  wholeRadius,
+} from "../../constants";
+
+import Navigation from "../Navigation";
 
 const RightAngledTriangle = () => {
-  const [dimensions, setDimensions] = useState({});
   const [scope, setScope] = useState();
   const [area, setArea] = useState();
   const [hight, setHight] = useState(0);
   const [radiusOne, setRadiusOne] = useState(0);
   const [radiusThree, setRadiusThree] = useState(0);
   const [error, setError] = useState();
+  const [lengths, setLengths] = useState({});
+
   const handleSides = (event) => {
     const value = event?.target?.value;
     const name = event?.target?.name;
     const hight = (value / 2) * Math.sqrt(2);
-    const pythagoras = Math.sqrt(Math.pow(value, 2) + Math.pow(value, 2));
-    const masaha = round((nameSideB * nameSideC) / 2);
 
-    if ([nameSideB && nameSideC].includes(name)) {
-      setDimensions({ ...dimensions, a: pythagoras });
-      setArea((value * 4.5) / 2);
-      setScope(value * 4);
-      setHight(hight);
-    } else if ([nameSideC && nameSideB].includes(name)) {
-      setDimensions({ ...dimensions, a: pythagoras });
-      setArea(masaha);
-      setScope(value * 4);
-      setHight(hight);
-      setArea((value * 4.5) / 2);
-      handleSides();
+    const pythagoras = ( a, b, c ) => {
+      if(a && b) {
+        return Math.sqrt(powerOfTwo(a) + powerOfTwo(b));
+      } else if (a && c) {
+        return Math.sqrt(Math.pow(c) - Math.pow(a))
+      } else if(b && c) {
+        return Math.sqrt(Math.pow(c) - Math.pow(b))
+      }
+    } 
+
+    if (name === nameSideA) {
+      setLengths({ ...lengths, a: value });
+    } else if (name === nameSideB) {
+      setLengths({ ...lengths, b: value });
+    } else if (name === nameSideC) {
+      setLengths({ ...lengths, c: value });
+    }
+
+    if(lengths.a && lengths.b) {
+      setLengths({...lengths, c: pythagoras(lengths.a, lengths.b, null)});
+    } else if(lengths.c && lengths.a) {
+      setLengths({...lengths, b: pythagoras(lengths.a, null, lengths.c)});
+    } else if(lengths.c && lengths.b) {
+      setLengths({...lengths, a: pythagoras(null, lengths.b, lengths.c)});
     }
   };
 
-  const handleCalculations = (event) => {
-    const value = event.target.value;
-    const name = event.target.name;
-
-    if ([nameSideB, nameSideC].includes(name)) {
-      handleSides(event);
-    } else if (name === nameArea) {
-    } else if (name === nameScope) {
-    }
-  };
   const handleRadius = (event) => {
     const value = event.target.value;
     const name = event.target.name;
@@ -63,29 +67,30 @@ const RightAngledTriangle = () => {
     if (name === nameRightAngledRadiusOne) {
       setRadiusOne(value);
       if (isToSmall && isToBig) {
-        setError('');
+        setError("");
         setRadiusThree(wholeRadius - rightAngledRadius - value);
       } else if (!isToSmall) {
-        setError('Der obere Radius ist zu klein');
+        setError("Der obere Radius ist zu klein");
       } else if (!isToBig) {
-        setError('Der obere Radius ist zu gross');
+        setError("Der obere Radius ist zu gross");
       }
     } else if (name === nameRightAngledRadiusThree) {
       setRadiusThree(value);
-      setError('');
+      setError("");
       if (isToSmall && isToBig) {
-        setError('');
+        setError("");
         setRadiusOne(wholeRadius - rightAngledRadius - value);
       } else if (!isToSmall) {
-        setError('Der untere Radius ist zu klein');
+        setError("Der untere Radius ist zu klein");
       } else if (!isToBig) {
-        setError('Der untere Radius ist zu gross');
+        setError("Der untere Radius ist zu gross");
       }
     }
   };
 
   return (
     <div className="flex items-center justify-center flex-col">
+      <h2 className="text-blue-400 text-4xl mt-40">Rechtwinkliges Dreieck</h2>
       <div className="border-black relative mt-20">
         <div className="Triangle mt-40 mb-24"></div>
         <input
@@ -114,8 +119,8 @@ const RightAngledTriangle = () => {
             type="number"
             name={nameSideC}
             className="border border-gray-500 bg-transparent focus:border-transparent w-24 text-center rounded"
-            onChange={(event) => handleCalculations(event)}
-            value={dimensions.c}
+            onChange={(event) => handleSides(event)}
+            value={lengths.c}
           />
           <p className="text-lg text-gray-500 font-bold">Seite c</p>
         </label>
@@ -124,8 +129,8 @@ const RightAngledTriangle = () => {
             type="number"
             name={nameSideB}
             className="border border-gray-500 bg-transparent focus:border-transparent w-24 text-center rounded appearance-none"
-            onChange={(event) => handleCalculations(event)}
-            value={dimensions.b}
+            onChange={(event) => handleSides(event)}
+            value={lengths.b}
           />
           <p className="text-lg text-gray-500 font-bold">Seite b</p>
         </label>
@@ -134,8 +139,8 @@ const RightAngledTriangle = () => {
             type="number"
             name={nameSideA}
             className="border border-gray-500 bg-transparent focus:border-transparent w-24 text-center rounded"
-            onChange={(event) => handleCalculations(event)}
-            value={dimensions.a}
+            onChange={(event) => handleSides(event)}
+            value={lengths.a}
           />
           <p className="text-lg text-gray-500 font-bold">Seite a</p>
         </label>
@@ -146,7 +151,7 @@ const RightAngledTriangle = () => {
             type="number"
             name="hight"
             className="bg-transparent focus:border-transparent w-24 text-center"
-            onChange={(event) => handleCalculations(event)}
+            onChange={(event) => handleSides(event)}
             $
             value={hight}
           />
@@ -162,7 +167,7 @@ const RightAngledTriangle = () => {
             type="number"
             name={nameScope}
             className="bg-transparent focus:border-transparent text-start p-1 w-24 mr-5"
-            onChange={(event) => handleCalculations(event)}
+            onChange={(event) => handleSides(event)}
             value={scope}
           />
         </p>
@@ -172,12 +177,13 @@ const RightAngledTriangle = () => {
             type="number"
             name="area"
             className="bg-transparent focus:border-transparent text-start p-1 w-24"
-            onChange={(event) => handleCalculations(event)}
+            onChange={(event) => handleSides(event)}
             value={area}
           />
         </p>
       </div>
       <p className="text-lg text-red-500 font-bold mb-24">{error}</p>
+      <Navigation linkPrev="gleichseitigesdreieck" />
     </div>
   );
 };

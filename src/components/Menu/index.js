@@ -32,9 +32,12 @@ const Menu = () => {
           >
             <div className="bar rounded-sm bg-black h-0.5 transition duration-500 cursor-pointer fixed top-20 right-10 w-8"></div>
             <div
-              className={classNames("fixed top-36 left-14 bg-blue-900 rounded-3xl bg-opacity-80 w-52 h-20", {
-                hidden: !active,
-              })}
+              className={classNames(
+                "fixed top-36 left-14 bg-blue-900 rounded-3xl bg-opacity-80 w-52 h-20",
+                {
+                  hidden: !active,
+                }
+              )}
             >
               <DescriptionSwitch
                 isOn={value}
@@ -42,16 +45,23 @@ const Menu = () => {
                 handleToggle={() => setValue(!value)}
               />
             </div>
-            <p className={classNames("ToggleText text-lg font-bold text-white fixed", {
-              "hidden": ! active
-            })}>
-                Beschreibung
+            <p
+              className={classNames(
+                "ToggleText text-lg font-bold text-white fixed",
+                {
+                  hidden: !active,
+                }
+              )}
+            >
+              Beschreibung
             </p>
           </div>
         </div>
       </div>
       <div className="flex fixed top-1 left-0 z-50">
-        <img src={Logo} alt="Logo" className="h-40" />
+        <a href="/">
+          <img src={Logo} alt="Logo" className="h-40" />
+        </a>
       </div>
       <div
         className={classNames("main-container", {
@@ -77,7 +87,7 @@ const Menu = () => {
                 "rounded-xl": active,
               })}
             >
-              <Content isOn={value}/>
+              <Content isOn={value} />
             </div>
           </header>
         </div>

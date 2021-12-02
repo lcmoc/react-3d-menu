@@ -16,7 +16,8 @@ import {
   wholeRadius,
 } from '../../constants';
 
-import classNames from 'classnames';
+import Navigation from "../Navigation";
+import classNames from "classnames";
 
 const IsoscelesTriangle = () => {
   const [dimensions, setDimensions] = useState({});
@@ -215,6 +216,7 @@ const IsoscelesTriangle = () => {
         </p>
       </div>
       <p className="text-lg text-red-500 font-bold mb-20"></p>
+      <Navigation linkNext="gleichseitigesdreieck"/>
     </div>
   );
 };
