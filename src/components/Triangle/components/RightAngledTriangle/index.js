@@ -1,6 +1,6 @@
-import "../styles-button.css";
+import '../styles-button.css';
 
-import { RightAngledTriangleTitle, RightAngledTriangleType } from "../constans";
+import { RightAngledTriangleTitle, RightAngledTriangleType } from '../constans';
 
 import FormulaFilter from "../FormulaFilter";
 import Pythagoras from "../Pythagoras";
@@ -22,6 +22,10 @@ const RightAngledTriangle = () => {
         />
         <ul className="text-gray-500 text-lg mb-7 flex flex-col justify-center">
           <li>Das Dreieck besitzt immer einen Rechten Winkel</li>
+          <li>
+            Der Flächeninhalt eines rechtwinkligen Dreiecks ist halb so groß wie
+            der Flächeninhalt des Rechtecks.
+          </li>
         </ul>
       </div>
       <FormulaFilter

@@ -1,6 +1,6 @@
-import "./styles.css";
+import './styles.css';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   nameArea,
   nameHight,
@@ -14,7 +14,7 @@ import {
   powerOfTwo,
   round,
   wholeRadius,
-} from "../../constants";
+} from '../../constants';
 
 import Navigation from "../Navigation";
 import classNames from "classnames";
@@ -29,7 +29,7 @@ const IsoscelesTriangle = () => {
   const handleSides = (event) => {
     const value = event?.target?.value;
     const name = event?.target?.name;
-    
+
     if ([nameSideA, nameSideB].includes(name)) {
       setDimensions({ ...dimensions, a: value, b: value });
     } else if (name === nameSideC && value !== dimensions.a) {
@@ -39,7 +39,7 @@ const IsoscelesTriangle = () => {
       setDimensions({ ...dimensions, c: (area * 2) / hight });
     } else if (scope && dimensions.c) {
       const currenValue = (scope - dimensions.c) / 2;
-      setDimensions({a: currenValue, b: currenValue})
+      setDimensions({ a: currenValue, b: currenValue });
     }
   };
 
@@ -157,41 +157,29 @@ const IsoscelesTriangle = () => {
             }}
             value={dimensions.c}
           />
-          <p
-            className="text-lg text-gray-500 font-bold"
-          >
-            Seite c
-          </p>
+          <p className="text-lg text-gray-500 font-bold">Seite c</p>
         </label>
         <label htmlFor={nameSideB} className="IsoSideB text-center">
           <input
             type="number"
             name={nameSideB}
-            className= "border border-gray-500 bg-transparent w-24 text-center rounded"
+            className="border border-gray-500 bg-transparent w-24 text-center rounded"
             onChange={(event) => handleCalculations(event)}
             value={dimensions.b}
           />
-          <p
-            className="text-lg text-gray-500 font-bold"
-          >
-            Seite b
-          </p>
+          <p className="text-lg text-gray-500 font-bold">Seite b</p>
         </label>
         <label htmlFor={nameSideA} className="IsoSideA text-center">
           <input
             type="number"
             name={nameSideA}
             className={classNames(
-              "border border-gray-500 bg-transparent w-24 text-center rounded",
+              'border border-gray-500 bg-transparent w-24 text-center rounded'
             )}
             onChange={(event) => handleCalculations(event)}
             value={dimensions.a}
           />
-          <p
-            className="text-lg text-gray-500 font-bold"
-          >
-            Seite a
-          </p>
+          <p className="text-lg text-gray-500 font-bold">Seite a</p>
         </label>
         <input
           type="number"
