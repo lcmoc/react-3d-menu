@@ -1,6 +1,6 @@
 To install and run the code use:
 
-### `git clone: "link"`
+### `git clone https://github.com/lcmoc/geo-rechner.git`
 
 ### `cd geo-rechner`
 
