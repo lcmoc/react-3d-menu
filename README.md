@@ -1,4 +1,4 @@
-To isntall and run the code use:
+To install and run the code use:
 
 ### `git clone: "link"`
 
