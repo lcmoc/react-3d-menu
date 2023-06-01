@@ -1,11 +1,10 @@
 To install and run the code use:
 
-### `git clone https://github.com/lcmoc/geo-rechner.git`
+### `git clone https://github.com/lcmoc/react-3d-menu.git`
 
-### `cd geo-rechner`
+### `cd react-3d-menu`
 
-### `npm i`
-### `npm i react-burger-menu`
+### `yarn install`
 
 ### `npm start`
 

@@ -3,7 +3,6 @@ import "./styles.css";
 import React, { useState } from "react";
 
 import Content from "../Content";
-import DescriptionSwitch from "./components/DescriptionSwitch";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import Logo from "../../assets/Logo.png";
 import MenuLinks from "./components/MenuLinks";
@@ -15,8 +14,6 @@ const Menu = () => {
   const handleClick = () => {
     active ? setActive(false) : setActive(true);
   };
-
-  const [value, setValue] = useState(false);
 
   return (
     <div className={active ? "ContentContainer active" : "ContentContainer"}>
@@ -31,30 +28,6 @@ const Menu = () => {
             onClick={(event) => handleClick(event)}
           >
             <div className="bar rounded-sm bg-black h-0.5 transition duration-500 cursor-pointer fixed top-20 right-10 w-8"></div>
-            <div
-              className={classNames(
-                "fixed top-36 left-14 bg-blue-900 rounded-3xl bg-opacity-80 w-52 h-20",
-                {
-                  hidden: !active,
-                }
-              )}
-            >
-              <DescriptionSwitch
-                isOn={value}
-                onColor="#EF476F"
-                handleToggle={() => setValue(!value)}
-              />
-            </div>
-            <p
-              className={classNames(
-                "ToggleText text-lg font-bold text-white fixed",
-                {
-                  hidden: !active,
-                }
-              )}
-            >
-              Beschreibung
-            </p>
           </div>
         </div>
       </div>
@@ -87,7 +60,7 @@ const Menu = () => {
                 "rounded-xl": active,
               })}
             >
-              <Content isOn={value} />
+              <Content />
             </div>
           </header>
         </div>

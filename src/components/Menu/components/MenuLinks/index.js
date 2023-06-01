@@ -1,5 +1,5 @@
-import SinusPng from '../../../../assets/sinus.png';
-import TrianglePng from '../../../../assets/dreieck.png';
+import SinusPng from "../../../../assets/sinus.png";
+import TrianglePng from "../../../../assets/dreieck.png";
 
 const MenuLinks = () => {
   const Icon = ({ href, src, alt, txt }) => (
@@ -14,19 +14,14 @@ const MenuLinks = () => {
 
   return (
     <div className="flex items-center justify-center bg-blue-900 rounded-3xl bg-opacity-80 text-white w-auto">
-      <Icon href="/dreieck" src={TrianglePng} alt="triangle" txt="Dreieck" />
+      <Icon href="/page1" src={TrianglePng} alt="page1" txt="page1" />
       <Icon
         href="/"
         src="https://assets.codepen.io/907368/home.svg"
         alt="home"
         txt="Home"
       />
-      <Icon
-        href="/trigonomie"
-        src={SinusPng}
-        alt="trigonomie"
-        txt="Trigonomie"
-      />
+      <Icon href="/page2" src={SinusPng} alt="page2" txt="page2" />
     </div>
   );
 };
